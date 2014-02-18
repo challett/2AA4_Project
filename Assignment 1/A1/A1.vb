@@ -116,5 +116,9 @@
         If e.KeyCode = Keys.P Then
             Me.BackgroundImage = My.Resources.PauseScreen
         End If
+
+        If e.KeyCode = Keys.R Then
+            Me.BackgroundImage = My.Resources.LayoutGreen
+        End If
     End Sub
 End Class
