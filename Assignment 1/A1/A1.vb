@@ -20,28 +20,22 @@
         Dim size As Integer
         size = 15
         Dim track As Integer
+        Dim Initialx As Integer
         track = 0
-        For i = 0 To 3
+        For i = 0 To 7
             For j = 0 To 3
                 trackarray(track) = New PictureBox()
-                trackarray(track).Location = New System.Drawing.Point(70 + 140 * j, 208 + 140 * i)
                 Me.Controls.Add(trackarray(track))
                 trackarray(track).Image = Nothing
                 trackarray(track).Height = 70
                 trackarray(track).Width = 70
                 trackarray(track).BackColor() = Color.Transparent
-                track = track + 1
-            Next
-        Next
-        For i = 0 To 3
-            For j = 0 To 3
-                trackarray(track) = New PictureBox()
-                trackarray(track).Location = New System.Drawing.Point(140 + 140 * j, 138 + 140 * i)
-                Me.Controls.Add(trackarray(track))
-                trackarray(track).Image = Nothing
-                trackarray(track).Height = 70
-                trackarray(track).Width = 70
-                trackarray(track).BackColor() = Color.Transparent
+                If (i Mod 2 = 0) Then
+                    Initialx = 70
+                Else
+                    Initialx = 0
+                End If
+                trackarray(track).Location = New System.Drawing.Point(70 + 70 * i, 138 + 70 * j)
                 track = track + 1
             Next
         Next
