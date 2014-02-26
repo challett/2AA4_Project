@@ -104,7 +104,7 @@ Partial Class Form1
         Me.redpiece.BackColor = System.Drawing.Color.Transparent
         Me.redpiece.Cursor = System.Windows.Forms.Cursors.Hand
         Me.redpiece.Image = CType(resources.GetObject("redpiece.Image"), System.Drawing.Image)
-        Me.redpiece.Location = New System.Drawing.Point(631, 664)
+        Me.redpiece.Location = New System.Drawing.Point(140, 140)
         Me.redpiece.Name = "redpiece"
         Me.redpiece.Size = New System.Drawing.Size(70, 70)
         Me.redpiece.TabIndex = 8
