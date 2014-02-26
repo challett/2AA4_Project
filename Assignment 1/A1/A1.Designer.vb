@@ -33,10 +33,12 @@ Partial Class Form1
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.redpiece = New System.Windows.Forms.PictureBox()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.blackpiece = New System.Windows.Forms.PictureBox()
+        Me.StandardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.redpiece, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.blackpiece, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -57,20 +59,21 @@ Partial Class Form1
         '
         'NewGameToolStripMenuItem
         '
+        Me.NewGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StandardToolStripMenuItem, Me.CustomToolStripMenuItem})
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewGameToolStripMenuItem.Text = "New Game"
         '
         'PauseGameToolStripMenuItem
         '
         Me.PauseGameToolStripMenuItem.Name = "PauseGameToolStripMenuItem"
-        Me.PauseGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.PauseGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PauseGameToolStripMenuItem.Text = "Pause Game"
         '
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
         '
         'ViewToolStripMenuItem
@@ -104,22 +107,36 @@ Partial Class Form1
         Me.redpiece.BackColor = System.Drawing.Color.Transparent
         Me.redpiece.Cursor = System.Windows.Forms.Cursors.Hand
         Me.redpiece.Image = CType(resources.GetObject("redpiece.Image"), System.Drawing.Image)
-        Me.redpiece.Location = New System.Drawing.Point(140, 140)
+        Me.redpiece.Location = New System.Drawing.Point(12, 47)
         Me.redpiece.Name = "redpiece"
         Me.redpiece.Size = New System.Drawing.Size(70, 70)
         Me.redpiece.TabIndex = 8
         Me.redpiece.TabStop = False
+        Me.redpiece.Visible = False
         '
-        'PictureBox5
+        'blackpiece
         '
-        Me.PictureBox5.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox5.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(631, 27)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(70, 70)
-        Me.PictureBox5.TabIndex = 17
-        Me.PictureBox5.TabStop = False
+        Me.blackpiece.BackColor = System.Drawing.Color.Transparent
+        Me.blackpiece.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.blackpiece.Image = CType(resources.GetObject("blackpiece.Image"), System.Drawing.Image)
+        Me.blackpiece.Location = New System.Drawing.Point(631, 27)
+        Me.blackpiece.Name = "blackpiece"
+        Me.blackpiece.Size = New System.Drawing.Size(70, 70)
+        Me.blackpiece.TabIndex = 17
+        Me.blackpiece.TabStop = False
+        Me.blackpiece.Visible = False
+        '
+        'StandardToolStripMenuItem
+        '
+        Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
+        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StandardToolStripMenuItem.Text = "Standard"
+        '
+        'CustomToolStripMenuItem
+        '
+        Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
+        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CustomToolStripMenuItem.Text = "Custom"
         '
         'Form1
         '
@@ -127,7 +144,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(701, 733)
-        Me.Controls.Add(Me.PictureBox5)
+        Me.Controls.Add(Me.blackpiece)
         Me.Controls.Add(Me.redpiece)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -137,7 +154,7 @@ Partial Class Form1
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.redpiece, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.blackpiece, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -151,7 +168,9 @@ Partial Class Form1
     Friend WithEvents BackgroundToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ResetToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents redpiece As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
+    Friend WithEvents blackpiece As System.Windows.Forms.PictureBox
     Friend WithEvents QuitGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StandardToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CustomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
