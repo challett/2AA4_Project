@@ -3,6 +3,6 @@ Group:
 	Spencer Lee
 	Jadeesuan Anton
 	Nicolas Lelievre
-	Jeremy "Zhiting" Qian
+	Jeremy Zhiting Qian
 
 This is a basic checkers game made in visual basic written for a project in Software Engineering 2AA4 at McMaster University
