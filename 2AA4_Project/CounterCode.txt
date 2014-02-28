@@ -1,0 +1,66 @@
+    Function checkpiece(ByVal TF As Boolean) As Boolean
+        Dim count As Integer
+        Dim blackcount As Integer
+        For i = 0 To 31
+            If trackarray(i).Image Is redpiece.Image Then
+                count = increasing(count)
+                If count > 12 Then
+                    checkpiece = False
+                End If
+            ElseIf trackarray(i).Image Is blackpiece.Image Then
+                blackcount = increasing(blackcount)
+                If blackcount > 12 Then
+                    checkpiece = False
+                End If
+            End If
+        Next
+        Return True
+    End Function
+
+    Protected Sub doSomething(ByVal sender As Object, ByVal e As EventArgs)
+        Dim limit As Boolean
+        Dim ThisPB As PictureBox
+        ThisPB = sender
+        If custom = True Then
+            ThisPB.Image = redpiece.Image
+            counter = counter + 1
+            Label1.Text = counter
+        Else
+            MsgBox("")
+        End If
+    End Sub
+
+    Private Sub StandardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StandardToolStripMenuItem.Click
+        Dim gamesetup(0 To 31) As Integer
+        custom = False
+        For i = 0 To 11
+            gamesetup(i) = 1
+        Next
+        For i = 20 To 31
+            gamesetup(i) = 2
+        Next
+        For i = 0 To 31
+            If gamesetup(i) = 1 Then
+                trackarray(i).Image = redpiece.Image
+            ElseIf gamesetup(i) = 2 Then
+                trackarray(i).Image = blackpiece.Image
+            Else
+                trackarray(i).Image = Nothing
+            End If
+        Next
+
+    End Sub
+
+    Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
+        custom = True
+        For i = 0 To 31
+            trackarray(i).Image = Nothing
+        Next
+    End Sub
+
+    Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click
+        custom = False
+        For i = 0 To 31
+            trackarray(i).Image = Nothing
+        Next
+    End Sub
