@@ -1,6 +1,7 @@
 ﻿Public Class Form1
     Dim trackarray(0 To 31) As PictureBox
     Dim custom As Boolean
+    Dim counter As Integer
     Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
@@ -47,14 +48,19 @@
             Next
         Next
         For u = 0 To 31
-            AddHandler trackarray(u).Click, AddressOf changelabel
+            AddHandler trackarray(u).Click, AddressOf doSomething
         Next
     End Sub
 
-    Protected Sub changelabel()
-        Dim limit As Integer
-        If custom = True And limit < 13 Then
-            trackarray(1).Image = redpiece.Image
+    Protected Sub doSomething(ByVal sender As Object, ByVal e As EventArgs)
+        Dim limit As Boolean
+        Dim ThisPB As PictureBox
+        ThisPB = sender
+        If custom = True Then
+            ThisPB.Image = redpiece.Image
+            counter = counter + 1
+        Else
+            MsgBox("")
         End If
     End Sub
 
