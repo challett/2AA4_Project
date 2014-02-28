@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -34,16 +35,21 @@ Partial Class Form1
         Me.BackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.redpiece = New System.Windows.Forms.PictureBox()
-        Me.blackpiece = New System.Windows.Forms.PictureBox()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.ExitMode = New System.Windows.Forms.Button()
+        Me.RightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.BlackPieceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BlackReg = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BlackKing = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RedPieceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RedReg = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RedKing = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RemovePiece = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.redpiece, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.blackpiece, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RightClick.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -120,30 +126,6 @@ Partial Class Form1
         Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
-        'redpiece
-        '
-        Me.redpiece.BackColor = System.Drawing.Color.Transparent
-        Me.redpiece.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.redpiece.Image = CType(resources.GetObject("redpiece.Image"), System.Drawing.Image)
-        Me.redpiece.Location = New System.Drawing.Point(0, 27)
-        Me.redpiece.Name = "redpiece"
-        Me.redpiece.Size = New System.Drawing.Size(50, 50)
-        Me.redpiece.TabIndex = 8
-        Me.redpiece.TabStop = False
-        Me.redpiece.Visible = False
-        '
-        'blackpiece
-        '
-        Me.blackpiece.BackColor = System.Drawing.Color.Transparent
-        Me.blackpiece.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.blackpiece.Image = CType(resources.GetObject("blackpiece.Image"), System.Drawing.Image)
-        Me.blackpiece.Location = New System.Drawing.Point(451, 27)
-        Me.blackpiece.Name = "blackpiece"
-        Me.blackpiece.Size = New System.Drawing.Size(50, 50)
-        Me.blackpiece.TabIndex = 17
-        Me.blackpiece.TabStop = False
-        Me.blackpiece.Visible = False
-        '
         'RadioButton1
         '
         Me.RadioButton1.AutoSize = True
@@ -201,6 +183,56 @@ Partial Class Form1
         Me.ExitMode.Text = "Done"
         Me.ExitMode.UseVisualStyleBackColor = True
         '
+        'RightClick
+        '
+        Me.RightClick.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BlackPieceToolStripMenuItem, Me.RedPieceToolStripMenuItem, Me.RemovePiece})
+        Me.RightClick.Name = "RightClick"
+        Me.RightClick.Size = New System.Drawing.Size(149, 70)
+        '
+        'BlackPieceToolStripMenuItem
+        '
+        Me.BlackPieceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BlackReg, Me.BlackKing})
+        Me.BlackPieceToolStripMenuItem.Name = "BlackPieceToolStripMenuItem"
+        Me.BlackPieceToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.BlackPieceToolStripMenuItem.Text = "Black Piece"
+        '
+        'BlackReg
+        '
+        Me.BlackReg.Name = "BlackReg"
+        Me.BlackReg.Size = New System.Drawing.Size(114, 22)
+        Me.BlackReg.Text = "Regular"
+        '
+        'BlackKing
+        '
+        Me.BlackKing.Name = "BlackKing"
+        Me.BlackKing.Size = New System.Drawing.Size(114, 22)
+        Me.BlackKing.Text = "King"
+        '
+        'RedPieceToolStripMenuItem
+        '
+        Me.RedPieceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RedReg, Me.RedKing})
+        Me.RedPieceToolStripMenuItem.Name = "RedPieceToolStripMenuItem"
+        Me.RedPieceToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.RedPieceToolStripMenuItem.Text = "Red Piece"
+        '
+        'RedReg
+        '
+        Me.RedReg.Name = "RedReg"
+        Me.RedReg.Size = New System.Drawing.Size(114, 22)
+        Me.RedReg.Text = "Regular"
+        '
+        'RedKing
+        '
+        Me.RedKing.Name = "RedKing"
+        Me.RedKing.Size = New System.Drawing.Size(114, 22)
+        Me.RedKing.Text = "King"
+        '
+        'RemovePiece
+        '
+        Me.RemovePiece.Name = "RemovePiece"
+        Me.RemovePiece.Size = New System.Drawing.Size(148, 22)
+        Me.RemovePiece.Text = "Remove Piece"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -208,13 +240,12 @@ Partial Class Form1
         Me.AutoScroll = True
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(501, 624)
+        Me.ContextMenuStrip = Me.RightClick
         Me.Controls.Add(Me.ExitMode)
         Me.Controls.Add(Me.RadioButton4)
         Me.Controls.Add(Me.RadioButton3)
         Me.Controls.Add(Me.RadioButton2)
         Me.Controls.Add(Me.RadioButton1)
-        Me.Controls.Add(Me.blackpiece)
-        Me.Controls.Add(Me.redpiece)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -225,8 +256,7 @@ Partial Class Form1
         Me.Text = "Ultimate Checkers"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.redpiece, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.blackpiece, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RightClick.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -239,8 +269,6 @@ Partial Class Form1
     Friend WithEvents PauseGame As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackgroundToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ResetToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents redpiece As System.Windows.Forms.PictureBox
-    Friend WithEvents blackpiece As System.Windows.Forms.PictureBox
     Friend WithEvents QuitGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StandardToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CustomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -249,5 +277,13 @@ Partial Class Form1
     Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
     Friend WithEvents ExitMode As System.Windows.Forms.Button
+    Friend WithEvents RightClick As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents BlackPieceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BlackReg As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BlackKing As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RedPieceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RedReg As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RedKing As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RemovePiece As System.Windows.Forms.ToolStripMenuItem
 
 End Class

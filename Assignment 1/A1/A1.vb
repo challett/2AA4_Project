@@ -28,6 +28,17 @@
         End If
     End Sub
 
+    Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Dim response As MsgBoxResult
+        response = MsgBox("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Quit")
+        If response = MsgBoxResult.Yes Then
+            Me.Dispose()
+        ElseIf response = MsgBoxResult.No Then
+            e.Cancel = True
+            Exit Sub
+        End If
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim size As Integer
         custom = False
@@ -68,15 +79,15 @@
 
         ThisPB = sender
         If custom = True And redselect = True And redcounter < 12 Then
-            ThisPB.Image = redpiece.Image
+            ThisPB.Image = My.Resources.RP_shadow_
             redcounter = redcounter + 1
 
         ElseIf custom = True And redkingselect = True And redcounter < 12 Then
-            ThisPB.Image = My.Resources.RP_King__shadow_
+            ThisPB.Image = My.Resources.RP_shadow_
             redcounter = redcounter + 1
 
         ElseIf custom = True And blackselect = True And blackcounter < 12 Then
-            ThisPB.Image = blackpiece.Image
+            ThisPB.Image = My.Resources.BP_shadow_
             blackcounter = blackcounter + 1
 
         ElseIf custom = True And blackkingselect = True And blackcounter < 12 Then
@@ -98,14 +109,13 @@
         Next
         For i = 0 To 31
             If gamesetup(i) = 1 Then
-                trackarray(i).Image = blackpiece.Image
+                trackarray(i).Image = My.Resources.BP_shadow_
             ElseIf gamesetup(i) = 2 Then
-                trackarray(i).Image = redpiece.Image
+                trackarray(i).Image = My.Resources.RP_shadow_
             Else
                 trackarray(i).Image = Nothing
             End If
         Next
-
     End Sub
 
     Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
@@ -118,15 +128,11 @@
         RadioButton2.Visible = True
         RadioButton3.Visible = True
         RadioButton4.Visible = True
-
     End Sub
 
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
         If PauseGame.Pressed = True Then
             Me.BackgroundImage = My.Resources.PauseScreen
-        End If
-        If PauseGame.Pressed = False Then
-            Me.BackgroundImage = My.Resources.LayoutGreen
         End If
     End Sub
 
@@ -147,9 +153,11 @@
             Me.BackgroundImage = My.Resources.PauseScreen
         End If
 
+        ' Resume is "R"
         If e.KeyCode = Keys.R Then
-            Me.BackgroundImage = My.Resources.LayoutGreen
+            Me.BackgroundImage = Form2.CurBack
         End If
+
     End Sub
 
     Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click
