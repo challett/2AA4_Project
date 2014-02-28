@@ -48,6 +48,7 @@ Partial Class Form1
         Me.RedReg = New System.Windows.Forms.ToolStripMenuItem()
         Me.RedKing = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemovePiece = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RemoveButton = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.RightClick.SuspendLayout()
         Me.SuspendLayout()
@@ -154,7 +155,7 @@ Partial Class Form1
         '
         Me.RadioButton3.AutoSize = True
         Me.RadioButton3.BackColor = System.Drawing.Color.Red
-        Me.RadioButton3.Location = New System.Drawing.Point(281, 581)
+        Me.RadioButton3.Location = New System.Drawing.Point(305, 581)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(75, 17)
         Me.RadioButton3.TabIndex = 20
@@ -176,7 +177,7 @@ Partial Class Form1
         '
         'ExitMode
         '
-        Me.ExitMode.Location = New System.Drawing.Point(221, 578)
+        Me.ExitMode.Location = New System.Drawing.Point(231, 581)
         Me.ExitMode.Name = "ExitMode"
         Me.ExitMode.Size = New System.Drawing.Size(54, 23)
         Me.ExitMode.TabIndex = 22
@@ -233,6 +234,15 @@ Partial Class Form1
         Me.RemovePiece.Size = New System.Drawing.Size(148, 22)
         Me.RemovePiece.Text = "Remove Piece"
         '
+        'RemoveButton
+        '
+        Me.RemoveButton.Location = New System.Drawing.Point(231, 552)
+        Me.RemoveButton.Name = "RemoveButton"
+        Me.RemoveButton.Size = New System.Drawing.Size(61, 23)
+        Me.RemoveButton.TabIndex = 23
+        Me.RemoveButton.Text = "Set"
+        Me.RemoveButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -241,6 +251,7 @@ Partial Class Form1
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(501, 624)
         Me.ContextMenuStrip = Me.RightClick
+        Me.Controls.Add(Me.RemoveButton)
         Me.Controls.Add(Me.ExitMode)
         Me.Controls.Add(Me.RadioButton4)
         Me.Controls.Add(Me.RadioButton3)
@@ -285,5 +296,6 @@ Partial Class Form1
     Friend WithEvents RedReg As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RedKing As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RemovePiece As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RemoveButton As System.Windows.Forms.Button
 
 End Class

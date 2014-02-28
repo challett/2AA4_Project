@@ -7,6 +7,7 @@
     Dim blackselect As Boolean
     Dim redkingselect As Boolean
     Dim blackkingselect As Boolean
+    Dim remove As Boolean
     Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
@@ -43,6 +44,7 @@
         Dim size As Integer
         custom = False
         size = 15
+        remove = False
         Dim track As Integer
         Dim Initialx As Integer
         track = 0
@@ -51,6 +53,7 @@
         RadioButton3.Visible = False
         RadioButton4.Visible = False
         ExitMode.Visible = False
+        RemoveButton.Visible = False
         For i = 0 To 7
             For j = 0 To 3
                 trackarray(track) = New PictureBox()
@@ -78,23 +81,30 @@
 
 
         ThisPB = sender
-        If custom = True And redselect = True And redcounter < 12 Then
-            ThisPB.Image = My.Resources.RP_shadow_
-            redcounter = redcounter + 1
+        If remove = False Then
+            If custom = True And redselect = True And redcounter < 12 And ThisPB.Image Is Nothing Then
+                ThisPB.Image = My.Resources.RP_shadow_
+                redcounter = redcounter + 1
 
-        ElseIf custom = True And redkingselect = True And redcounter < 12 Then
-            ThisPB.Image = My.Resources.RP_shadow_
-            redcounter = redcounter + 1
+            ElseIf custom = True And redkingselect = True And redcounter < 12 And ThisPB.Image Is Nothing Then
+                ThisPB.Image = My.Resources.RP_shadow_
+                redcounter = redcounter + 1
 
-        ElseIf custom = True And blackselect = True And blackcounter < 12 Then
-            ThisPB.Image = My.Resources.BP_shadow_
-            blackcounter = blackcounter + 1
+            ElseIf custom = True And blackselect = True And blackcounter < 12 And ThisPB.Image Is Nothing Then
+                ThisPB.Image = My.Resources.BP_shadow_
+                blackcounter = blackcounter + 1
 
-        ElseIf custom = True And blackkingselect = True And blackcounter < 12 Then
-            ThisPB.Image = My.Resources.BP_King__shadow_
-            blackcounter = blackcounter + 1
-        Else
-            MsgBox("Please Select A Game Mode")
+            ElseIf custom = True And blackkingselect = True And blackcounter < 12 And ThisPB.Image Is Nothing Then
+                ThisPB.Image = My.Resources.BP_King__shadow_
+                blackcounter = blackcounter + 1
+            ElseIf custom = False Then
+                MsgBox("Please Start a New Game First")
+            Else
+                MsgBox("Please Select A Valid Piece")
+            End If
+        ElseIf remove = True Then
+
+            ThisPB.Image = Nothing
         End If
     End Sub
 
@@ -121,6 +131,7 @@
     Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
         custom = True
         ExitMode.Visible = True
+        RemoveButton.Visible = True
         For i = 0 To 31
             trackarray(i).Image = Nothing
         Next
@@ -210,10 +221,21 @@
 
     Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click
         custom = False
+        RemoveButton.Visible = False
         ExitMode.Visible = False
         RadioButton1.Visible = False
         RadioButton2.Visible = False
         RadioButton3.Visible = False
         RadioButton4.Visible = False
+    End Sub
+
+    Private Sub RemoveButton_Click(sender As Object, e As EventArgs) Handles RemoveButton.Click
+        If remove = True Then
+            remove = False
+            RemoveButton.Text = "Remove"
+        ElseIf remove = False Then
+            remove = True
+            RemoveButton.Text = "Set"
+        End If
     End Sub
 End Class
