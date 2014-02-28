@@ -36,6 +36,11 @@ Partial Class Form1
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.redpiece = New System.Windows.Forms.PictureBox()
         Me.blackpiece = New System.Windows.Forms.PictureBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
+        Me.ExitMode = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.redpiece, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.blackpiece, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +67,7 @@ Partial Class Form1
         '
         Me.NewGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StandardToolStripMenuItem, Me.CustomToolStripMenuItem})
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.NewGameToolStripMenuItem.Text = "New Game"
         '
         'StandardToolStripMenuItem
@@ -80,13 +85,13 @@ Partial Class Form1
         'PauseGame
         '
         Me.PauseGame.Name = "PauseGame"
-        Me.PauseGame.Size = New System.Drawing.Size(152, 22)
+        Me.PauseGame.Size = New System.Drawing.Size(139, 22)
         Me.PauseGame.Text = "Pause Game"
         '
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
         '
         'ViewToolStripMenuItem
@@ -139,20 +144,82 @@ Partial Class Form1
         Me.blackpiece.TabStop = False
         Me.blackpiece.Visible = False
         '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.RadioButton1.Location = New System.Drawing.Point(132, 581)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(82, 17)
+        Me.RadioButton1.TabIndex = 18
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "Black Piece"
+        Me.RadioButton1.UseVisualStyleBackColor = False
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.RadioButton2.Location = New System.Drawing.Point(132, 604)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(106, 17)
+        Me.RadioButton2.TabIndex = 19
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "King Black Piece"
+        Me.RadioButton2.UseVisualStyleBackColor = False
+        '
+        'RadioButton3
+        '
+        Me.RadioButton3.AutoSize = True
+        Me.RadioButton3.BackColor = System.Drawing.Color.Red
+        Me.RadioButton3.Location = New System.Drawing.Point(281, 581)
+        Me.RadioButton3.Name = "RadioButton3"
+        Me.RadioButton3.Size = New System.Drawing.Size(75, 17)
+        Me.RadioButton3.TabIndex = 20
+        Me.RadioButton3.TabStop = True
+        Me.RadioButton3.Text = "Red Piece"
+        Me.RadioButton3.UseVisualStyleBackColor = False
+        '
+        'RadioButton4
+        '
+        Me.RadioButton4.AutoSize = True
+        Me.RadioButton4.BackColor = System.Drawing.Color.Red
+        Me.RadioButton4.Location = New System.Drawing.Point(281, 604)
+        Me.RadioButton4.Name = "RadioButton4"
+        Me.RadioButton4.Size = New System.Drawing.Size(99, 17)
+        Me.RadioButton4.TabIndex = 21
+        Me.RadioButton4.TabStop = True
+        Me.RadioButton4.Text = "King Red Piece"
+        Me.RadioButton4.UseVisualStyleBackColor = False
+        '
+        'ExitMode
+        '
+        Me.ExitMode.Location = New System.Drawing.Point(221, 578)
+        Me.ExitMode.Name = "ExitMode"
+        Me.ExitMode.Size = New System.Drawing.Size(54, 23)
+        Me.ExitMode.TabIndex = 22
+        Me.ExitMode.Text = "Done"
+        Me.ExitMode.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(501, 625)
+        Me.ClientSize = New System.Drawing.Size(501, 624)
+        Me.Controls.Add(Me.ExitMode)
+        Me.Controls.Add(Me.RadioButton4)
+        Me.Controls.Add(Me.RadioButton3)
+        Me.Controls.Add(Me.RadioButton2)
+        Me.Controls.Add(Me.RadioButton1)
         Me.Controls.Add(Me.blackpiece)
         Me.Controls.Add(Me.redpiece)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximumSize = New System.Drawing.Size(517, 663)
-        Me.MinimumSize = New System.Drawing.Size(517, 0)
+        Me.MinimumSize = New System.Drawing.Size(517, 39)
         Me.Name = "Form1"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "Ultimate Checkers"
@@ -177,5 +244,10 @@ Partial Class Form1
     Friend WithEvents QuitGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StandardToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CustomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
+    Friend WithEvents ExitMode As System.Windows.Forms.Button
 
 End Class

@@ -1,7 +1,12 @@
 ﻿Public Class Form1
     Dim trackarray(0 To 31) As PictureBox
     Dim custom As Boolean
-    Dim counter As Integer
+    Dim redcounter As Integer
+    Dim blackcounter As Integer
+    Dim redselect As Boolean
+    Dim blackselect As Boolean
+    Dim redkingselect As Boolean
+    Dim blackkingselect As Boolean
     Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
@@ -30,6 +35,11 @@
         Dim track As Integer
         Dim Initialx As Integer
         track = 0
+        RadioButton1.Visible = False
+        RadioButton2.Visible = False
+        RadioButton3.Visible = False
+        RadioButton4.Visible = False
+        ExitMode.Visible = False
         For i = 0 To 7
             For j = 0 To 3
                 trackarray(track) = New PictureBox()
@@ -54,12 +64,26 @@
 
     Protected Sub doSomething(ByVal sender As Object, ByVal e As EventArgs)
         Dim ThisPB As PictureBox
+
+
         ThisPB = sender
-        If custom = True Then
+        If custom = True And redselect = True And redcounter < 12 Then
             ThisPB.Image = redpiece.Image
-            counter = counter + 1
+            redcounter = redcounter + 1
+
+        ElseIf custom = True And redkingselect = True And redcounter < 12 Then
+            ThisPB.Image = My.Resources.RP_King__shadow_
+            redcounter = redcounter + 1
+
+        ElseIf custom = True And blackselect = True And blackcounter < 12 Then
+            ThisPB.Image = blackpiece.Image
+            blackcounter = blackcounter + 1
+
+        ElseIf custom = True And blackkingselect = True And blackcounter < 12 Then
+            ThisPB.Image = My.Resources.BP_King__shadow_
+            blackcounter = blackcounter + 1
         Else
-            MsgBox("")
+            MsgBox("Please Select A Game Mode")
         End If
     End Sub
 
@@ -86,9 +110,15 @@
 
     Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
         custom = True
+        ExitMode.Visible = True
         For i = 0 To 31
             trackarray(i).Image = Nothing
         Next
+        RadioButton1.Visible = True
+        RadioButton2.Visible = True
+        RadioButton3.Visible = True
+        RadioButton4.Visible = True
+
     End Sub
 
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
@@ -120,5 +150,62 @@
         If e.KeyCode = Keys.R Then
             Me.BackgroundImage = My.Resources.LayoutGreen
         End If
+    End Sub
+
+    Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click
+        custom = False
+        For i = 0 To 31
+            trackarray(i).Image = Nothing
+        Next
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
+        blackselect = True
+        blackkingselect = False
+        redselect = False
+        redkingselect = False
+        RadioButton2.Checked = False
+        RadioButton3.Checked = False
+        RadioButton4.Checked = False
+
+    End Sub
+
+    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
+        blackselect = False
+        blackkingselect = False
+        redselect = True
+        redkingselect = False
+        RadioButton2.Checked = False
+        RadioButton1.Checked = False
+        RadioButton4.Checked = False
+    End Sub
+
+    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
+        blackselect = False
+        blackkingselect = True
+        redselect = False
+        redkingselect = False
+        RadioButton1.Checked = False
+        RadioButton3.Checked = False
+        RadioButton4.Checked = False
+    End Sub
+
+    Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
+        blackselect = False
+        blackkingselect = False
+        redselect = False
+        redkingselect = True
+        RadioButton2.Checked = False
+        RadioButton3.Checked = False
+        RadioButton1.Checked = False
+    End Sub
+
+    Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click
+        custom = False
+        ExitMode.Visible = False
+        RadioButton1.Visible = False
+        RadioButton2.Visible = False
+        RadioButton3.Visible = False
+        RadioButton4.Visible = False
     End Sub
 End Class
