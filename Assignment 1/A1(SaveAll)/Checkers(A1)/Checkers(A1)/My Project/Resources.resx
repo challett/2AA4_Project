@@ -118,6 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BP_King__shadow_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BP[King](shadow).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BP_shadow_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BP(shadow).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LayoutBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LayoutBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -156,5 +162,11 @@
   </data>
   <data name="PauseScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RP_King__shadow_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RP[King](shadow).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RP_shadow_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RP(shadow).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
