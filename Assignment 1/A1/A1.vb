@@ -53,7 +53,6 @@
     End Sub
 
     Protected Sub doSomething(ByVal sender As Object, ByVal e As EventArgs)
-        Dim limit As Boolean
         Dim ThisPB As PictureBox
         ThisPB = sender
         If custom = True Then
