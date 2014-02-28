@@ -14,7 +14,12 @@
     End Sub
 
     Private Sub QuitGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitGameToolStripMenuItem.Click
-        End
+        Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?", "Quitting this game will lose any progress", MessageBoxButtons.YesNo)
+        If result = DialogResult.No Then
+            Form2.Close()
+        ElseIf result = DialogResult.Yes Then
+            End
+        End If
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,15 +34,15 @@
                 trackarray(track) = New PictureBox()
                 Me.Controls.Add(trackarray(track))
                 trackarray(track).Image = Nothing
-                trackarray(track).Height = 70
-                trackarray(track).Width = 70
+                trackarray(track).Height = 50
+                trackarray(track).Width = 50
                 trackarray(track).BackColor() = Color.Transparent
                 If (i Mod 2 = 0) Then
-                    Initialx = 70
+                    Initialx = 50
                 Else
                     Initialx = 0
                 End If
-                trackarray(track).Location = New System.Drawing.Point(70 + Initialx + 140 * j, 138 + 70 * i)
+                trackarray(track).Location = New System.Drawing.Point(50 + Initialx + 100 * j, 135 + 50 * i)
                 track = track + 1
             Next
         Next
@@ -64,9 +69,9 @@
         Next
         For i = 0 To 31
             If gamesetup(i) = 1 Then
-                trackarray(i).Image = redpiece.Image
-            ElseIf gamesetup(i) = 2 Then
                 trackarray(i).Image = blackpiece.Image
+            ElseIf gamesetup(i) = 2 Then
+                trackarray(i).Image = redpiece.Image
             Else
                 trackarray(i).Image = Nothing
             End If
@@ -79,5 +84,32 @@
         For i = 0 To 31
             trackarray(i).Image = Nothing
         Next
+    End Sub
+
+    Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
+        If PauseGame.Pressed = True Then
+            Me.BackgroundImage = My.Resources.PauseScreen
+        End If
+        If PauseGame.Pressed = False Then
+            Me.BackgroundImage = My.Resources.LayoutGreen
+        End If
+    End Sub
+
+    Private Sub Form1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+
+        ' Quit is "Q"
+        If e.KeyCode = Keys.Q Then
+            Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", "Quit", MessageBoxButtons.YesNo)
+            If result = DialogResult.No Then
+                Form2.Close()
+            ElseIf result = DialogResult.Yes Then
+                End
+            End If
+        End If
+
+        ' Pause is "P"
+        If e.KeyCode = Keys.P Then
+            Me.BackgroundImage = My.Resources.PauseScreen
+        End If
     End Sub
 End Class

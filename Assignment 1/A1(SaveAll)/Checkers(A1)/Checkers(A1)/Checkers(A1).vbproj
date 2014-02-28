@@ -124,6 +124,45 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutGrey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PauseScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutBlueM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutBlueT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutGreenM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutGreenT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutGreyM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutGreyT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutRedM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutRedT.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

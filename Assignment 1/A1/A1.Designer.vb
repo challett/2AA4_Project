@@ -26,7 +26,9 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PauseGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StandardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PauseGame = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -34,8 +36,6 @@ Partial Class Form1
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.redpiece = New System.Windows.Forms.PictureBox()
         Me.blackpiece = New System.Windows.Forms.PictureBox()
-        Me.StandardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.redpiece, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.blackpiece, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -43,16 +43,17 @@ Partial Class Form1
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.SystemColors.Control
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.ViewToolStripMenuItem, Me.SettingsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(701, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(501, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'MenuToolStripMenuItem
         '
-        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewGameToolStripMenuItem, Me.PauseGameToolStripMenuItem, Me.QuitGameToolStripMenuItem})
+        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewGameToolStripMenuItem, Me.PauseGame, Me.QuitGameToolStripMenuItem})
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
         Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
         Me.MenuToolStripMenuItem.Text = "Menu"
@@ -64,11 +65,23 @@ Partial Class Form1
         Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewGameToolStripMenuItem.Text = "New Game"
         '
-        'PauseGameToolStripMenuItem
+        'StandardToolStripMenuItem
         '
-        Me.PauseGameToolStripMenuItem.Name = "PauseGameToolStripMenuItem"
-        Me.PauseGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PauseGameToolStripMenuItem.Text = "Pause Game"
+        Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
+        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.StandardToolStripMenuItem.Text = "Standard"
+        '
+        'CustomToolStripMenuItem
+        '
+        Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
+        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.CustomToolStripMenuItem.Text = "Custom"
+        '
+        'PauseGame
+        '
+        Me.PauseGame.Name = "PauseGame"
+        Me.PauseGame.Size = New System.Drawing.Size(152, 22)
+        Me.PauseGame.Text = "Pause Game"
         '
         'QuitGameToolStripMenuItem
         '
@@ -107,9 +120,9 @@ Partial Class Form1
         Me.redpiece.BackColor = System.Drawing.Color.Transparent
         Me.redpiece.Cursor = System.Windows.Forms.Cursors.Hand
         Me.redpiece.Image = CType(resources.GetObject("redpiece.Image"), System.Drawing.Image)
-        Me.redpiece.Location = New System.Drawing.Point(12, 47)
+        Me.redpiece.Location = New System.Drawing.Point(0, 27)
         Me.redpiece.Name = "redpiece"
-        Me.redpiece.Size = New System.Drawing.Size(70, 70)
+        Me.redpiece.Size = New System.Drawing.Size(50, 50)
         Me.redpiece.TabIndex = 8
         Me.redpiece.TabStop = False
         Me.redpiece.Visible = False
@@ -119,38 +132,30 @@ Partial Class Form1
         Me.blackpiece.BackColor = System.Drawing.Color.Transparent
         Me.blackpiece.Cursor = System.Windows.Forms.Cursors.Hand
         Me.blackpiece.Image = CType(resources.GetObject("blackpiece.Image"), System.Drawing.Image)
-        Me.blackpiece.Location = New System.Drawing.Point(631, 27)
+        Me.blackpiece.Location = New System.Drawing.Point(451, 27)
         Me.blackpiece.Name = "blackpiece"
-        Me.blackpiece.Size = New System.Drawing.Size(70, 70)
+        Me.blackpiece.Size = New System.Drawing.Size(50, 50)
         Me.blackpiece.TabIndex = 17
         Me.blackpiece.TabStop = False
         Me.blackpiece.Visible = False
         '
-        'StandardToolStripMenuItem
-        '
-        Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
-        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.StandardToolStripMenuItem.Text = "Standard"
-        '
-        'CustomToolStripMenuItem
-        '
-        Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
-        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CustomToolStripMenuItem.Text = "Custom"
-        '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScroll = True
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(701, 733)
+        Me.ClientSize = New System.Drawing.Size(501, 625)
         Me.Controls.Add(Me.blackpiece)
         Me.Controls.Add(Me.redpiece)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.MaximumSize = New System.Drawing.Size(517, 663)
+        Me.MinimumSize = New System.Drawing.Size(517, 0)
         Me.Name = "Form1"
-        Me.Text = "Checkers"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+        Me.Text = "Ultimate Checkers"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.redpiece, System.ComponentModel.ISupportInitialize).EndInit()
@@ -164,7 +169,7 @@ Partial Class Form1
     Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NewGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PauseGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PauseGame As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackgroundToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ResetToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents redpiece As System.Windows.Forms.PictureBox
