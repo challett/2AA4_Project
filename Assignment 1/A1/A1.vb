@@ -87,7 +87,7 @@
                 redcounter = redcounter + 1
 
             ElseIf custom = True And redkingselect = True And redcounter < 12 And ThisPB.Image Is Nothing Then
-                ThisPB.Image = My.Resources.RP_shadow_
+                ThisPB.Image = My.Resources.RP_King__shadow_
                 redcounter = redcounter + 1
 
             ElseIf custom = True And blackselect = True And blackcounter < 12 And ThisPB.Image Is Nothing Then

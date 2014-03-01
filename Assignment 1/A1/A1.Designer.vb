@@ -131,7 +131,7 @@ Partial Class Form1
         '
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.RadioButton1.Location = New System.Drawing.Point(132, 581)
+        Me.RadioButton1.Location = New System.Drawing.Point(119, 575)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(82, 17)
         Me.RadioButton1.TabIndex = 18
@@ -143,7 +143,7 @@ Partial Class Form1
         '
         Me.RadioButton2.AutoSize = True
         Me.RadioButton2.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.RadioButton2.Location = New System.Drawing.Point(132, 604)
+        Me.RadioButton2.Location = New System.Drawing.Point(119, 601)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(106, 17)
         Me.RadioButton2.TabIndex = 19
@@ -155,7 +155,7 @@ Partial Class Form1
         '
         Me.RadioButton3.AutoSize = True
         Me.RadioButton3.BackColor = System.Drawing.Color.Red
-        Me.RadioButton3.Location = New System.Drawing.Point(305, 581)
+        Me.RadioButton3.Location = New System.Drawing.Point(305, 575)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(75, 17)
         Me.RadioButton3.TabIndex = 20
@@ -167,7 +167,7 @@ Partial Class Form1
         '
         Me.RadioButton4.AutoSize = True
         Me.RadioButton4.BackColor = System.Drawing.Color.Red
-        Me.RadioButton4.Location = New System.Drawing.Point(281, 604)
+        Me.RadioButton4.Location = New System.Drawing.Point(281, 601)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(99, 17)
         Me.RadioButton4.TabIndex = 21
@@ -177,7 +177,7 @@ Partial Class Form1
         '
         'ExitMode
         '
-        Me.ExitMode.Location = New System.Drawing.Point(231, 581)
+        Me.ExitMode.Location = New System.Drawing.Point(226, 598)
         Me.ExitMode.Name = "ExitMode"
         Me.ExitMode.Size = New System.Drawing.Size(54, 23)
         Me.ExitMode.TabIndex = 22
@@ -236,7 +236,7 @@ Partial Class Form1
         '
         'RemoveButton
         '
-        Me.RemoveButton.Location = New System.Drawing.Point(231, 552)
+        Me.RemoveButton.Location = New System.Drawing.Point(223, 575)
         Me.RemoveButton.Name = "RemoveButton"
         Me.RemoveButton.Size = New System.Drawing.Size(61, 23)
         Me.RemoveButton.TabIndex = 23
