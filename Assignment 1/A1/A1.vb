@@ -111,18 +111,21 @@
         m_custom = False
         m_standard = True
         MakeInvis()
+        timestop()
         MsgBox("Click Any Black Square to Start Game and Timer")
     End Sub
 
     Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
         m_custom = True
         m_standard = False
+        CustomPiece.Visible = True
         ExitMode.Visible = True
+        CustomInfo.Visible = True
+        CustomPiece.Image = red.Image
+        timestop()
         For i = 0 To 31
             c_trackarray(i).Image = Nothing
         Next
-        CustomPiece.Image = black.Image
-        CustomInfo.Visible = True
     End Sub
 
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
@@ -249,8 +252,8 @@
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
 
         e_Seconds += 1
-        If e_Seconds > 60 Then
-            e_Minutes +=
+        If e_Seconds > 59 Then
+            e_Minutes += 1
             e_Seconds = 0
         End If
 
@@ -262,5 +265,9 @@
         ExitMode.Visible = False
         GameTimer.Enabled = False
         TimerDisp.Visible = False
+    End Function
+    Function timestop()
+        e_Seconds = 0
+        e_Minutes = 0
     End Function
 End Class
