@@ -35,10 +35,6 @@ Partial Class Form1
         Me.BackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.ExitMode = New System.Windows.Forms.Button()
         Me.RightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.BlackPieceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,9 +44,23 @@ Partial Class Form1
         Me.RedReg = New System.Windows.Forms.ToolStripMenuItem()
         Me.RedKing = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemovePiece = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RemoveButton = New System.Windows.Forms.Button()
+        Me.CustomPiece = New System.Windows.Forms.PictureBox()
+        Me.red = New System.Windows.Forms.PictureBox()
+        Me.black = New System.Windows.Forms.PictureBox()
+        Me.kingred = New System.Windows.Forms.PictureBox()
+        Me.blkking = New System.Windows.Forms.PictureBox()
+        Me.CustomInfo = New System.Windows.Forms.Label()
+        Me.ErrorClick = New System.Windows.Forms.PictureBox()
+        Me.GameTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerDisp = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.RightClick.SuspendLayout()
+        CType(Me.CustomPiece, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.red, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.black, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.kingred, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.blkking, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorClick, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -74,31 +84,32 @@ Partial Class Form1
         '
         Me.NewGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StandardToolStripMenuItem, Me.CustomToolStripMenuItem})
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewGameToolStripMenuItem.Text = "New Game"
         '
         'StandardToolStripMenuItem
         '
         Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
-        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.StandardToolStripMenuItem.Text = "Standard"
         '
         'CustomToolStripMenuItem
         '
         Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
-        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CustomToolStripMenuItem.Text = "Custom"
         '
         'PauseGame
         '
+        Me.PauseGame.Enabled = False
         Me.PauseGame.Name = "PauseGame"
-        Me.PauseGame.Size = New System.Drawing.Size(139, 22)
+        Me.PauseGame.Size = New System.Drawing.Size(152, 22)
         Me.PauseGame.Text = "Pause Game"
         '
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
         '
         'ViewToolStripMenuItem
@@ -124,65 +135,18 @@ Partial Class Form1
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
-        '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.RadioButton1.Location = New System.Drawing.Point(119, 575)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(82, 17)
-        Me.RadioButton1.TabIndex = 18
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Black Piece"
-        Me.RadioButton1.UseVisualStyleBackColor = False
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.RadioButton2.Location = New System.Drawing.Point(119, 601)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(106, 17)
-        Me.RadioButton2.TabIndex = 19
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "King Black Piece"
-        Me.RadioButton2.UseVisualStyleBackColor = False
-        '
-        'RadioButton3
-        '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.BackColor = System.Drawing.Color.Red
-        Me.RadioButton3.Location = New System.Drawing.Point(305, 575)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(75, 17)
-        Me.RadioButton3.TabIndex = 20
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Red Piece"
-        Me.RadioButton3.UseVisualStyleBackColor = False
-        '
-        'RadioButton4
-        '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.BackColor = System.Drawing.Color.Red
-        Me.RadioButton4.Location = New System.Drawing.Point(281, 601)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(99, 17)
-        Me.RadioButton4.TabIndex = 21
-        Me.RadioButton4.TabStop = True
-        Me.RadioButton4.Text = "King Red Piece"
-        Me.RadioButton4.UseVisualStyleBackColor = False
         '
         'ExitMode
         '
-        Me.ExitMode.Location = New System.Drawing.Point(226, 598)
+        Me.ExitMode.Location = New System.Drawing.Point(217, 593)
         Me.ExitMode.Name = "ExitMode"
-        Me.ExitMode.Size = New System.Drawing.Size(54, 23)
+        Me.ExitMode.Size = New System.Drawing.Size(111, 23)
         Me.ExitMode.TabIndex = 22
-        Me.ExitMode.Text = "Done"
+        Me.ExitMode.Text = "Complete Setup"
         Me.ExitMode.UseVisualStyleBackColor = True
+        Me.ExitMode.Visible = False
         '
         'RightClick
         '
@@ -234,14 +198,88 @@ Partial Class Form1
         Me.RemovePiece.Size = New System.Drawing.Size(148, 22)
         Me.RemovePiece.Text = "Remove Piece"
         '
-        'RemoveButton
+        'CustomPiece
         '
-        Me.RemoveButton.Location = New System.Drawing.Point(223, 575)
-        Me.RemoveButton.Name = "RemoveButton"
-        Me.RemoveButton.Size = New System.Drawing.Size(61, 23)
-        Me.RemoveButton.TabIndex = 23
-        Me.RemoveButton.Text = "Set"
-        Me.RemoveButton.UseVisualStyleBackColor = True
+        Me.CustomPiece.BackColor = System.Drawing.Color.Transparent
+        Me.CustomPiece.Location = New System.Drawing.Point(129, 566)
+        Me.CustomPiece.Name = "CustomPiece"
+        Me.CustomPiece.Size = New System.Drawing.Size(53, 50)
+        Me.CustomPiece.TabIndex = 23
+        Me.CustomPiece.TabStop = False
+        '
+        'red
+        '
+        Me.red.Image = Global.WindowsApplication1.My.Resources.Resources.RP_shadow_
+        Me.red.Location = New System.Drawing.Point(424, 12)
+        Me.red.Name = "red"
+        Me.red.Size = New System.Drawing.Size(53, 50)
+        Me.red.TabIndex = 24
+        Me.red.TabStop = False
+        Me.red.Visible = False
+        '
+        'black
+        '
+        Me.black.Image = Global.WindowsApplication1.My.Resources.Resources.BP_shadow_
+        Me.black.Location = New System.Drawing.Point(424, 12)
+        Me.black.Name = "black"
+        Me.black.Size = New System.Drawing.Size(53, 50)
+        Me.black.TabIndex = 25
+        Me.black.TabStop = False
+        Me.black.Visible = False
+        '
+        'kingred
+        '
+        Me.kingred.Image = Global.WindowsApplication1.My.Resources.Resources.RP_King__shadow_
+        Me.kingred.Location = New System.Drawing.Point(424, 12)
+        Me.kingred.Name = "kingred"
+        Me.kingred.Size = New System.Drawing.Size(53, 50)
+        Me.kingred.TabIndex = 26
+        Me.kingred.TabStop = False
+        Me.kingred.Visible = False
+        '
+        'blkking
+        '
+        Me.blkking.Image = Global.WindowsApplication1.My.Resources.Resources.BP_King__shadow_
+        Me.blkking.Location = New System.Drawing.Point(424, 12)
+        Me.blkking.Name = "blkking"
+        Me.blkking.Size = New System.Drawing.Size(53, 50)
+        Me.blkking.TabIndex = 27
+        Me.blkking.TabStop = False
+        Me.blkking.Visible = False
+        '
+        'CustomInfo
+        '
+        Me.CustomInfo.AutoSize = True
+        Me.CustomInfo.BackColor = System.Drawing.Color.Transparent
+        Me.CustomInfo.Location = New System.Drawing.Point(188, 566)
+        Me.CustomInfo.Name = "CustomInfo"
+        Me.CustomInfo.Size = New System.Drawing.Size(209, 13)
+        Me.CustomInfo.TabIndex = 28
+        Me.CustomInfo.Text = "Click On the Left Picture to Change Pieces"
+        Me.CustomInfo.Visible = False
+        '
+        'ErrorClick
+        '
+        Me.ErrorClick.BackColor = System.Drawing.Color.Transparent
+        Me.ErrorClick.Location = New System.Drawing.Point(48, 135)
+        Me.ErrorClick.Name = "ErrorClick"
+        Me.ErrorClick.Size = New System.Drawing.Size(406, 409)
+        Me.ErrorClick.TabIndex = 29
+        Me.ErrorClick.TabStop = False
+        '
+        'GameTimer
+        '
+        Me.GameTimer.Interval = 1000
+        '
+        'TimerDisp
+        '
+        Me.TimerDisp.AutoSize = True
+        Me.TimerDisp.BackColor = System.Drawing.Color.Transparent
+        Me.TimerDisp.Location = New System.Drawing.Point(237, 566)
+        Me.TimerDisp.Name = "TimerDisp"
+        Me.TimerDisp.Size = New System.Drawing.Size(0, 13)
+        Me.TimerDisp.TabIndex = 30
+        Me.TimerDisp.Visible = False
         '
         'Form1
         '
@@ -251,16 +289,19 @@ Partial Class Form1
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(501, 624)
         Me.ContextMenuStrip = Me.RightClick
-        Me.Controls.Add(Me.RemoveButton)
+        Me.Controls.Add(Me.TimerDisp)
+        Me.Controls.Add(Me.ErrorClick)
+        Me.Controls.Add(Me.CustomInfo)
+        Me.Controls.Add(Me.blkking)
+        Me.Controls.Add(Me.kingred)
+        Me.Controls.Add(Me.black)
+        Me.Controls.Add(Me.red)
+        Me.Controls.Add(Me.CustomPiece)
         Me.Controls.Add(Me.ExitMode)
-        Me.Controls.Add(Me.RadioButton4)
-        Me.Controls.Add(Me.RadioButton3)
-        Me.Controls.Add(Me.RadioButton2)
-        Me.Controls.Add(Me.RadioButton1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MaximumSize = New System.Drawing.Size(517, 663)
+        Me.MaximumSize = New System.Drawing.Size(600, 663)
         Me.MinimumSize = New System.Drawing.Size(517, 39)
         Me.Name = "Form1"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
@@ -268,6 +309,12 @@ Partial Class Form1
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.RightClick.ResumeLayout(False)
+        CType(Me.CustomPiece, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.red, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.black, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.kingred, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.blkking, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorClick, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -283,10 +330,6 @@ Partial Class Form1
     Friend WithEvents QuitGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StandardToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CustomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
     Friend WithEvents ExitMode As System.Windows.Forms.Button
     Friend WithEvents RightClick As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents BlackPieceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -296,6 +339,14 @@ Partial Class Form1
     Friend WithEvents RedReg As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RedKing As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RemovePiece As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RemoveButton As System.Windows.Forms.Button
+    Friend WithEvents CustomPiece As System.Windows.Forms.PictureBox
+    Friend WithEvents red As System.Windows.Forms.PictureBox
+    Friend WithEvents black As System.Windows.Forms.PictureBox
+    Friend WithEvents kingred As System.Windows.Forms.PictureBox
+    Friend WithEvents blkking As System.Windows.Forms.PictureBox
+    Friend WithEvents CustomInfo As System.Windows.Forms.Label
+    Friend WithEvents ErrorClick As System.Windows.Forms.PictureBox
+    Friend WithEvents GameTimer As System.Windows.Forms.Timer
+    Friend WithEvents TimerDisp As System.Windows.Forms.Label
 
 End Class

@@ -1,23 +1,12 @@
 ﻿Public Class Form1
-    Dim trackarray(0 To 31) As PictureBox
-    Dim custom As Boolean
-    Dim redcounter As Integer
-    Dim blackcounter As Integer
-    Dim redselect As Boolean
-    Dim blackselect As Boolean
-    Dim redkingselect As Boolean
-    Dim blackkingselect As Boolean
-    Dim remove As Boolean
-    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs)
-
-    End Sub
-
+    Dim c_trackarray(0 To 31) As PictureBox
+    Dim m_custom As Boolean
+    Dim m_standard As Boolean
+    Dim gamesetup(0 To 31) As Integer
+    Dim e_Seconds As Integer
+    Dim e_Minutes As Integer
     Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundToolStripMenuItem.Click
         Form2.Show()
-    End Sub
-
-    Private Sub NewGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewGameToolStripMenuItem.Click
-
     End Sub
 
     Private Sub QuitGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitGameToolStripMenuItem.Click
@@ -41,104 +30,99 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim size As Integer
-        custom = False
-        size = 15
-        remove = False
-        Dim track As Integer
-        Dim Initialx As Integer
-        track = 0
-        RadioButton1.Visible = False
-        RadioButton2.Visible = False
-        RadioButton3.Visible = False
-        RadioButton4.Visible = False
-        ExitMode.Visible = False
-        RemoveButton.Visible = False
+
+        ErrorClick.SendToBack()
+        m_standard = True
+        m_custom = True
+        Dim c_track As Integer
+        Dim e_Initialx As Integer
+        c_track = 0
+
         For i = 0 To 7
             For j = 0 To 3
-                trackarray(track) = New PictureBox()
-                Me.Controls.Add(trackarray(track))
-                trackarray(track).Image = Nothing
-                trackarray(track).Height = 50
-                trackarray(track).Width = 50
-                trackarray(track).BackColor() = Color.Transparent
+                c_trackarray(c_track) = New PictureBox()
+                Me.Controls.Add(c_trackarray(c_track))
+                c_trackarray(c_track).Image = Nothing
+                c_trackarray(c_track).Height = 50
+                c_trackarray(c_track).Width = 50
+                c_trackarray(c_track).BackColor() = Color.Transparent
+                c_trackarray(c_track).BringToFront()
                 If (i Mod 2 = 0) Then
-                    Initialx = 50
+                    e_Initialx = 50
                 Else
-                    Initialx = 0
+                    e_Initialx = 0
                 End If
-                trackarray(track).Location = New System.Drawing.Point(50 + Initialx + 100 * j, 135 + 50 * i)
-                track = track + 1
+                c_trackarray(c_track).Location = New System.Drawing.Point(50 + e_Initialx + 100 * j, 135 + 50 * i)
+                c_track += 1
             Next
         Next
         For u = 0 To 31
-            AddHandler trackarray(u).Click, AddressOf doSomething
+            AddHandler c_trackarray(u).Click, AddressOf MakePiece
         Next
     End Sub
 
-    Protected Sub doSomething(ByVal sender As Object, ByVal e As EventArgs)
+    Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
         Dim ThisPB As PictureBox
-
-
         ThisPB = sender
-        If remove = False Then
-            If custom = True And redselect = True And redcounter < 12 And ThisPB.Image Is Nothing Then
-                ThisPB.Image = My.Resources.RP_shadow_
-                redcounter = redcounter + 1
+        If m_custom = True And m_standard = False Then
+            ThisPB.Image = CustomPiece.Image
 
-            ElseIf custom = True And redkingselect = True And redcounter < 12 And ThisPB.Image Is Nothing Then
-                ThisPB.Image = My.Resources.RP_King__shadow_
-                redcounter = redcounter + 1
-
-            ElseIf custom = True And blackselect = True And blackcounter < 12 And ThisPB.Image Is Nothing Then
-                ThisPB.Image = My.Resources.BP_shadow_
-                blackcounter = blackcounter + 1
-
-            ElseIf custom = True And blackkingselect = True And blackcounter < 12 And ThisPB.Image Is Nothing Then
-                ThisPB.Image = My.Resources.BP_King__shadow_
-                blackcounter = blackcounter + 1
-            ElseIf custom = False Then
-                MsgBox("Please Start a New Game First")
-            Else
-                MsgBox("Please Select A Valid Piece")
+            If LimitCheckBLK() Then
+                ThisPB.Image = Nothing
+                MsgBox("Black 12 Piece Limit Enforced")
             End If
-        ElseIf remove = True Then
 
-            ThisPB.Image = Nothing
+            If LimitCheckRED() Then
+                ThisPB.Image = Nothing
+                MsgBox("Red 12 Piece Limit Enforced")
+            End If
+
+        ElseIf m_standard = True And m_custom = False Then
+            GameTimer.Enabled = True
+            TimerDisp.Visible = True
+            For i = 0 To 11
+                gamesetup(i) = 1
+            Next
+            For i = 20 To 31
+                gamesetup(i) = 2
+            Next
+            For i = 0 To 31
+                If gamesetup(i) = 1 Then
+                    c_trackarray(i).Image = My.Resources.BP_shadow_
+                ElseIf gamesetup(i) = 2 Then
+                    c_trackarray(i).Image = My.Resources.RP_shadow_
+                Else
+                    c_trackarray(i).Image = Nothing
+                End If
+            Next
+        ElseIf m_standard = True And m_custom = True Then
+            MsgBox("Please Select A Game Mode")
+        ElseIf m_standard = False And m_custom = False Then
+            MsgBox("Logic For Moving is Done in This State and WIll Come Next")
+        Else
+            MsgBox("You Have Found a Bug")
         End If
+
+
+
     End Sub
 
     Private Sub StandardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StandardToolStripMenuItem.Click
-        Dim gamesetup(0 To 31) As Integer
-        custom = False
-        For i = 0 To 11
-            gamesetup(i) = 1
-        Next
-        For i = 20 To 31
-            gamesetup(i) = 2
-        Next
-        For i = 0 To 31
-            If gamesetup(i) = 1 Then
-                trackarray(i).Image = My.Resources.BP_shadow_
-            ElseIf gamesetup(i) = 2 Then
-                trackarray(i).Image = My.Resources.RP_shadow_
-            Else
-                trackarray(i).Image = Nothing
-            End If
-        Next
+        m_custom = False
+        m_standard = True
+        MakeInvis()
+        MsgBox("Click Any Black Square to Start Game and Timer")
     End Sub
 
     Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
-        custom = True
+        m_custom = True
+        m_standard = False
         ExitMode.Visible = True
-        RemoveButton.Visible = True
         For i = 0 To 31
-            trackarray(i).Image = Nothing
+            c_trackarray(i).Image = Nothing
         Next
-        RadioButton1.Visible = True
-        RadioButton2.Visible = True
-        RadioButton3.Visible = True
-        RadioButton4.Visible = True
+        CustomPiece.Image = black.Image
+        CustomInfo.Visible = True
     End Sub
 
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
@@ -172,70 +156,111 @@
     End Sub
 
     Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click
-        custom = False
+        m_custom = False
+        m_standard = False
         For i = 0 To 31
-            trackarray(i).Image = Nothing
+            c_trackarray(i).Image = Nothing
         Next
-    End Sub
-
-    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
-        blackselect = True
-        blackkingselect = False
-        redselect = False
-        redkingselect = False
-        RadioButton2.Checked = False
-        RadioButton3.Checked = False
-        RadioButton4.Checked = False
-
-    End Sub
-
-    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
-        blackselect = False
-        blackkingselect = False
-        redselect = True
-        redkingselect = False
-        RadioButton2.Checked = False
-        RadioButton1.Checked = False
-        RadioButton4.Checked = False
-    End Sub
-
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
-        blackselect = False
-        blackkingselect = True
-        redselect = False
-        redkingselect = False
-        RadioButton1.Checked = False
-        RadioButton3.Checked = False
-        RadioButton4.Checked = False
-    End Sub
-
-    Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
-        blackselect = False
-        blackkingselect = False
-        redselect = False
-        redkingselect = True
-        RadioButton2.Checked = False
-        RadioButton3.Checked = False
-        RadioButton1.Checked = False
+        MakeInvis()
     End Sub
 
     Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click
-        custom = False
-        RemoveButton.Visible = False
-        ExitMode.Visible = False
-        RadioButton1.Visible = False
-        RadioButton2.Visible = False
-        RadioButton3.Visible = False
-        RadioButton4.Visible = False
-    End Sub
+        TimerDisp.Visible = True
+        GameTimer.Enabled = True
 
-    Private Sub RemoveButton_Click(sender As Object, e As EventArgs) Handles RemoveButton.Click
-        If remove = True Then
-            remove = False
-            RemoveButton.Text = "Remove"
-        ElseIf remove = False Then
-            remove = True
-            RemoveButton.Text = "Set"
+        m_custom = False
+        m_standard = False
+        ExitMode.Visible = False
+        CustomInfo.Visible = False
+        CustomPiece.Visible = False
+    End Sub
+    Function LimitCheckBLK() As Boolean
+        Dim e_blackCount
+        e_blackCount = 0
+
+        For i = 0 To 31
+            If c_trackarray(i).Image Is blkking.Image Or c_trackarray(i).Image Is black.Image Then
+                e_blackCount += 1
+            End If
+        Next
+        If e_blackCount < 13 Then
+            LimitCheckBLK = False
+        Else
+            LimitCheckBLK = True
+        End If
+
+    End Function
+    Function LimitCheckRED() As Boolean
+        Dim e_redCount
+        e_redCount = 0
+
+        For i = 0 To 31
+            If c_trackarray(i).Image Is kingred.Image Or c_trackarray(i).Image Is red.Image Then
+                e_redCount += 1
+            End If
+        Next
+        If e_redCount < 13 Then
+            LimitCheckRED = False
+        Else
+            LimitCheckRED = True
+        End If
+
+    End Function
+
+    Private Sub CustomPiece_Click(sender As Object, e As EventArgs) Handles CustomPiece.Click
+        If CustomPiece.Image Is Nothing Then
+            CustomInfo.Text = "Now Placing Red"
+            CustomPiece.Image = red.Image
+
+        ElseIf CustomPiece.Image Is red.Image Then
+            CustomInfo.Text = "Now Placing King Red"
+            CustomPiece.Image = kingred.Image
+
+        ElseIf CustomPiece.Image Is kingred.Image Then
+            CustomInfo.Text = "Now Placing Black"
+            CustomPiece.Image = black.Image
+
+        ElseIf CustomPiece.Image Is black.Image Then
+            CustomInfo.Text = "Now Placing King Black"
+            CustomPiece.Image = blkking.Image
+
+        ElseIf CustomPiece.Image Is blkking.Image Then
+            CustomInfo.Text = "Now Removing, Click Me to Go to Red"
+
+            CustomPiece.Image = Nothing
+        Else
+            MsgBox("You Have Found a Bug")
         End If
     End Sub
+
+    Private Sub CustomInfo_Click(sender As Object, e As EventArgs) Handles CustomInfo.Click
+        If CustomPiece.Image Is Nothing Then
+            CustomPiece.Image = red.Image
+        End If
+    End Sub
+
+    Private Sub ErrorClick_Click(sender As Object, e As EventArgs) Handles ErrorClick.Click
+        If m_custom = True Or m_standard = False Then
+            MsgBox("You Cannot Place A Piece Here")
+        End If
+
+    End Sub
+
+    Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
+
+        e_Seconds += 1
+        If e_Seconds > 60 Then
+            e_Minutes +=
+            e_Seconds = 0
+        End If
+
+        TimerDisp.Text = "Time Elapsed: " + Convert.ToString(e_Minutes) + ":" + Convert.ToString(e_Seconds)
+    End Sub
+    Function MakeInvis()
+        CustomPiece.Visible = False
+        CustomInfo.Visible = False
+        ExitMode.Visible = False
+        GameTimer.Enabled = False
+        TimerDisp.Visible = False
+    End Function
 End Class
