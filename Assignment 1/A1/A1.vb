@@ -2,8 +2,8 @@
     Dim c_trackarray(0 To 31) As PictureBox
     Dim m_custom As Boolean
     Dim m_standard As Boolean
-    Dim e_Seconds As Integer
-    Dim e_Minutes As Integer
+    Dim c_Seconds As Integer
+    Dim c_Minutes As Integer
     Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundToolStripMenuItem.Click
         Form2.Show()
     End Sub
@@ -34,7 +34,7 @@
         m_standard = True
         m_custom = True
         Dim c_track As Integer
-        Dim e_Initialx As Integer
+        Dim c_Initialx As Integer
         c_track = 0
 
         For i = 0 To 7 'Drawing Image Boxes
@@ -47,11 +47,11 @@
                 c_trackarray(c_track).BackColor() = Color.Transparent
                 c_trackarray(c_track).BringToFront()
                 If (i Mod 2 = 0) Then
-                    e_Initialx = 50
+                    c_Initialx = 50
                 Else
-                    e_Initialx = 0
+                    c_Initialx = 0
                 End If
-                c_trackarray(c_track).Location = New System.Drawing.Point(50 + e_Initialx + 100 * j, 135 + 50 * i)
+                c_trackarray(c_track).Location = New System.Drawing.Point(50 + c_Initialx + 100 * j, 135 + 50 * i)
                 c_track += 1
             Next
         Next
@@ -132,23 +132,23 @@
     End Sub
 
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
-        If PauseGame.Pressed = True Then
-            Form3.Show() 'New Form Used
-            Me.Hide() 'Removes User Interaction
-        End If
+        '   If PauseGame.Pressed = True Then
+        '      Form3.Show() 'New Form Used
+        '     Me.Hide() 'Removes User Interaction
+        'End If
     End Sub
 
     Private Sub Form1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
 
         ' Quit is "Q"
-        If e.KeyCode = Keys.Q Then
-            Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", "Quit", MessageBoxButtons.YesNo)
-            If result = DialogResult.No Then
-                Form2.Close()
-            ElseIf result = DialogResult.Yes Then
-                End
-            End If
-        End If
+        'If e.KeyCode = Keys.Q Then
+        'Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", "Quit", MessageBoxButtons.YesNo)
+        'If result = DialogResult.No Then
+        'Form2.Close()
+        'ElseIf result = DialogResult.Yes Then
+        'End
+        'End If
+        'End If
 
     End Sub
 
@@ -251,13 +251,13 @@
             GameTimer.Enabled = False
         End If
 
-        e_Seconds += 1
-        If e_Seconds > 59 Then
-            e_Minutes += 1
-            e_Seconds = 0
+        c_Seconds += 1
+        If c_Seconds > 59 Then
+            c_Minutes += 1
+            c_Seconds = 0
         End If
 
-        TimerDisp.Text = "Time Elapsed: " + Convert.ToString(e_Minutes) + ":" + Convert.ToString(e_Seconds)
+        TimerDisp.Text = "Time Elapsed: " + Convert.ToString(c_Minutes) + ":" + Convert.ToString(c_Seconds)
     End Sub
 
     Function MakeInvis() 'Custom Setup buttons, must be invis when other modes selected
@@ -270,8 +270,8 @@
     End Function
 
     Function timestop() 'Resets Timing Variables
-        e_Seconds = 0
-        e_Minutes = 0
+        c_Seconds = 0
+        c_Minutes = 0
         Return True
     End Function
     Function gamebegin() 'qualities that must ben true when game starts
