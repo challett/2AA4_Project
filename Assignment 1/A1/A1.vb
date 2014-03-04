@@ -131,6 +131,11 @@
         Next
     End Sub
 
+    Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click 'Finished Setup
+        MsgBox("Game Has Began and the Timer Will Start Now")
+        Call gamebegin()
+    End Sub
+
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
         '   If PauseGame.Pressed = True Then
         '      Form3.Show() 'New Form Used
@@ -161,20 +166,16 @@
         MakeInvis() 'Call to make unecessary pieces disappear
     End Sub
 
-    Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click 'Finished Setup
-        MsgBox("Game Has Began and the Timer Will Start Now")
-        Call gamebegin()
-    End Sub
     Function LimitCheckBLK() As Boolean
-        Dim e_blackCount
-        e_blackCount = 0
+        Dim c_blackCount
+        c_blackCount = 0
 
         For i = 0 To 31
             If c_trackarray(i).Image Is blkking.Image Or c_trackarray(i).Image Is black.Image Then
-                e_blackCount += 1
+                c_blackCount += 1
             End If
         Next
-        If e_blackCount < 13 Then 'Limit Check Red Logic
+        If c_blackCount < 13 Then 'Limit Check Red Logic
             LimitCheckBLK = False
         Else
             LimitCheckBLK = True
@@ -182,15 +183,15 @@
 
     End Function
     Function LimitCheckRED() As Boolean 'Limit Checks
-        Dim e_redCount
-        e_redCount = 0
+        Dim c_redCount
+        c_redCount = 0
 
         For i = 0 To 31
             If c_trackarray(i).Image Is kingred.Image Or c_trackarray(i).Image Is red.Image Then
-                e_redCount += 1
+                c_redCount += 1
             End If
         Next
-        If e_redCount < 13 Then 'Logic is 13 because of Internal workings, piece is placed first then cancelled if passed
+        If c_redCount < 13 Then 'Logic is 13 because of Internal workings, piece is placed first then cancelled if passed
             LimitCheckRED = False
         Else
             LimitCheckRED = True
