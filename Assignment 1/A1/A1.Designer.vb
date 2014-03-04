@@ -101,7 +101,6 @@ Partial Class Form1
         '
         'PauseGame
         '
-        Me.PauseGame.Enabled = False
         Me.PauseGame.Name = "PauseGame"
         Me.PauseGame.Size = New System.Drawing.Size(139, 22)
         Me.PauseGame.Text = "Pause Game"
@@ -269,6 +268,7 @@ Partial Class Form1
         '
         'GameTimer
         '
+        Me.GameTimer.Enabled = True
         Me.GameTimer.Interval = 1000
         '
         'TimerDisp

@@ -132,7 +132,8 @@
 
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
         If PauseGame.Pressed = True Then
-            Me.BackgroundImage = My.Resources.PauseScreen
+            Form3.Show()
+            Me.Hide()
         End If
     End Sub
 
@@ -146,16 +147,6 @@
             ElseIf result = DialogResult.Yes Then
                 End
             End If
-        End If
-
-        ' Pause is "P"
-        If e.KeyCode = Keys.P Then
-            Me.BackgroundImage = My.Resources.PauseScreen
-        End If
-
-        ' Resume is "R"
-        If e.KeyCode = Keys.R Then
-            Me.BackgroundImage = Form2.CurBack
         End If
 
     End Sub
@@ -244,6 +235,7 @@
         If CustomPiece.Image Is Nothing Then
             CustomPiece.Image = red.Image
         End If
+
     End Sub
 
     Private Sub ErrorClick_Click(sender As Object, e As EventArgs) Handles ErrorClick.Click
@@ -263,6 +255,7 @@
 
         TimerDisp.Text = "Time Elapsed: " + Convert.ToString(e_Minutes) + ":" + Convert.ToString(e_Seconds)
     End Sub
+
     Function MakeInvis()
         CustomPiece.Visible = False
         CustomInfo.Visible = False
@@ -271,9 +264,11 @@
         TimerDisp.Visible = False
         Return True
     End Function
+
     Function timestop()
         e_Seconds = 0
         e_Minutes = 0
         Return True
     End Function
+
 End Class
