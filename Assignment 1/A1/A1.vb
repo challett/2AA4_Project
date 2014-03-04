@@ -2,14 +2,13 @@
     Dim c_trackarray(0 To 31) As PictureBox
     Dim m_custom As Boolean
     Dim m_standard As Boolean
-    Dim gamesetup(0 To 31) As Integer
     Dim e_Seconds As Integer
     Dim e_Minutes As Integer
     Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundToolStripMenuItem.Click
         Form2.Show()
     End Sub
 
-    Private Sub QuitGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitGameToolStripMenuItem.Click
+    Private Sub QuitGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitGameToolStripMenuItem.Click 'Standard Closing Code
         Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?", "Quitting this game will lose any progress", MessageBoxButtons.YesNo)
         If result = DialogResult.No Then
             Form2.Close()
@@ -18,7 +17,7 @@
         End If
     End Sub
 
-    Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing 'Standard Closing Code
         Dim response As MsgBoxResult
         response = MsgBox("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Quit")
         If response = MsgBoxResult.Yes Then
@@ -31,14 +30,14 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ErrorClick.SendToBack()
+        ErrorClick.SendToBack() 'Custom Mode Error Generator
         m_standard = True
         m_custom = True
         Dim c_track As Integer
         Dim e_Initialx As Integer
         c_track = 0
 
-        For i = 0 To 7
+        For i = 0 To 7 'Drawing Image Boxes
             For j = 0 To 3
                 c_trackarray(c_track) = New PictureBox()
                 Me.Controls.Add(c_trackarray(c_track))
@@ -56,16 +55,18 @@
                 c_track += 1
             Next
         Next
-        For u = 0 To 31
+        For u = 0 To 31 'Protected Sub to Handle Clicks
             AddHandler c_trackarray(u).Click, AddressOf MakePiece
         Next
     End Sub
 
     Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
         Dim ThisPB As PictureBox
+        Dim gamesetup(0 To 31) As Integer 'This is How Save will be Implemented Later
+
         ThisPB = sender
-        If m_custom = True And m_standard = False Then
-            ThisPB.Image = CustomPiece.Image
+        If m_custom = True And m_standard = False Then 'Custom State
+            ThisPB.Image = CustomPiece.Image 'Implementation of the Place First, Delete if limit passed Logic
             GameTimer.Enabled = False
             If LimitCheckBLK() Then
                 ThisPB.Image = Nothing
@@ -77,7 +78,7 @@
                 MsgBox("Red 12 Piece Limit Enforced")
             End If
 
-        ElseIf m_standard = True And m_custom = False Then
+        ElseIf m_standard = True And m_custom = False Then 'Standard Game State
             GameTimer.Enabled = True
             TimerDisp.Visible = True
             For i = 0 To 11
@@ -95,19 +96,19 @@
                     c_trackarray(i).Image = Nothing
                 End If
             Next
-        ElseIf m_standard = True And m_custom = True Then
+        ElseIf m_standard = True And m_custom = True Then 'State Logic- Initial
             MsgBox("Please Select A Game Mode")
-        ElseIf m_standard = False And m_custom = False Then
-            MsgBox("Logic For Moving is Done in This State and WIll Come Next")
+        ElseIf m_standard = False And m_custom = False Then 'State Logic - Moving, Not Yet Implemented
+            MsgBox("Logic For Moving is Done in This State and Will Come Next")
         Else
-            MsgBox("You Have Found a Bug")
+            MsgBox("You Have Found a Bug Please REstart The Program") 'All Cases Adressed, Runtime Glitch Prevention 
         End If
 
 
 
     End Sub
 
-    Private Sub StandardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StandardToolStripMenuItem.Click
+    Private Sub StandardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StandardToolStripMenuItem.Click 'Standard Mode
         m_custom = False
         m_standard = True
         MakeInvis()
@@ -115,7 +116,7 @@
         MsgBox("Click Any Black Square to Start Game and Timer")
     End Sub
 
-    Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
+    Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click 'Custom mode
         m_custom = True
         m_standard = False
         MakeInvis()
@@ -132,8 +133,8 @@
 
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
         If PauseGame.Pressed = True Then
-            Form3.Show()
-            Me.Hide()
+            Form3.Show() 'New Form Used
+            Me.Hide() 'Removes User Interaction
         End If
     End Sub
 
@@ -151,26 +152,18 @@
 
     End Sub
 
-    Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click
+    Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click 'Returns All to Form Load State
         m_custom = False
         m_standard = False
         For i = 0 To 31
             c_trackarray(i).Image = Nothing
         Next
-        MakeInvis()
+        MakeInvis() 'Call to make unecessary pieces disappear
     End Sub
 
-    Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click
-        TimerDisp.Visible = True
-        TimerDisp.Enabled = True
-        timestop()
-        GameTimer.Enabled = True
-
-        m_custom = False
-        m_standard = False
-        ExitMode.Visible = False
-        CustomInfo.Visible = False
-        CustomPiece.Visible = False
+    Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click 'Finished Setup
+        MsgBox("Game Has Began and the Timer Will Start Now")
+        Call gamebegin()
     End Sub
     Function LimitCheckBLK() As Boolean
         Dim e_blackCount
@@ -181,14 +174,14 @@
                 e_blackCount += 1
             End If
         Next
-        If e_blackCount < 13 Then
+        If e_blackCount < 13 Then 'Limit Check Red Logic
             LimitCheckBLK = False
         Else
             LimitCheckBLK = True
         End If
 
     End Function
-    Function LimitCheckRED() As Boolean
+    Function LimitCheckRED() As Boolean 'Limit Checks
         Dim e_redCount
         e_redCount = 0
 
@@ -197,7 +190,7 @@
                 e_redCount += 1
             End If
         Next
-        If e_redCount < 13 Then
+        If e_redCount < 13 Then 'Logic is 13 because of Internal workings, piece is placed first then cancelled if passed
             LimitCheckRED = False
         Else
             LimitCheckRED = True
@@ -205,31 +198,39 @@
 
     End Function
 
-    Private Sub CustomPiece_Click(sender As Object, e As EventArgs) Handles CustomPiece.Click
-        If CustomPiece.Image Is Nothing Then
-            CustomInfo.Text = "Now Placing Red"
-            CustomPiece.Image = red.Image
+    Private Sub CustomPiece_Click(sender As Object, e As EventArgs) Handles CustomPiece.Click 'Cycling Through possible pieces
+        Dim nextStatePic As Image
+        nextStatePic = CustomLoop(CustomPiece.Image)
+        CustomPiece.Image = nextStatePic
 
-        ElseIf CustomPiece.Image Is red.Image Then
-            CustomInfo.Text = "Now Placing King Red"
-            CustomPiece.Image = kingred.Image
-
-        ElseIf CustomPiece.Image Is kingred.Image Then
-            CustomInfo.Text = "Now Placing Black"
-            CustomPiece.Image = black.Image
-
-        ElseIf CustomPiece.Image Is black.Image Then
-            CustomInfo.Text = "Now Placing King Black"
-            CustomPiece.Image = blkking.Image
-
-        ElseIf CustomPiece.Image Is blkking.Image Then
-            CustomInfo.Text = "Now Removing, Click Me to Go to Red"
-
-            CustomPiece.Image = Nothing
-        Else
-            MsgBox("You Have Found a Bug")
-        End If
     End Sub
+    Function CustomLoop(ByRef InPic As Image) As Image 'Next State image, Input Always click, current state as Inpic
+        If InPic Is Nothing Then
+            CustomInfo.Text = "Now Placing Red"
+            CustomLoop = red.Image
+
+        ElseIf InPic Is red.Image Then
+            CustomInfo.Text = "Now Placing King Red"
+            CustomLoop = kingred.Image
+
+        ElseIf InPic Is kingred.Image Then
+            CustomInfo.Text = "Now Placing Black"
+            CustomLoop = black.Image
+
+        ElseIf InPic Is black.Image Then
+            CustomInfo.Text = "Now Placing King Black"
+            CustomLoop = blkking.Image
+
+        ElseIf InPic Is blkking.Image Then
+            CustomInfo.Text = "Now Removing, Click Me to Go to Red"
+            CustomLoop = Nothing
+        Else
+            MsgBox("You Have Found a Bug Returing to Initial State") 'Bug Prevention
+            CustomInfo.Text = "Now Placing Red"
+            CustomLoop = red.Image
+        End If
+    End Function
+
 
     Private Sub CustomInfo_Click(sender As Object, e As EventArgs) Handles CustomInfo.Click
         If CustomPiece.Image Is Nothing Then
@@ -238,8 +239,8 @@
 
     End Sub
 
-    Private Sub ErrorClick_Click(sender As Object, e As EventArgs) Handles ErrorClick.Click
-        If m_custom = True Or m_standard = False Then
+    Private Sub ErrorClick_Click(sender As Object, e As EventArgs) Handles ErrorClick.Click 'White Tile Clicks
+        If m_custom = True Or m_standard = False Then 'Custom Placing State
             MsgBox("You Cannot Place A Piece Here")
         End If
 
@@ -256,7 +257,7 @@
         TimerDisp.Text = "Time Elapsed: " + Convert.ToString(e_Minutes) + ":" + Convert.ToString(e_Seconds)
     End Sub
 
-    Function MakeInvis()
+    Function MakeInvis() 'Custom Setup buttons, must be invis when other modes selected
         CustomPiece.Visible = False
         CustomInfo.Visible = False
         ExitMode.Visible = False
@@ -265,10 +266,21 @@
         Return True
     End Function
 
-    Function timestop()
+    Function timestop() 'Resets Timing Variables
         e_Seconds = 0
         e_Minutes = 0
         Return True
     End Function
-
+    Function gamebegin() 'qualities that must ben true when game starts
+        m_custom = False
+        m_standard = False
+        ExitMode.Visible = False
+        CustomInfo.Visible = False
+        CustomPiece.Visible = False
+        TimerDisp.Visible = True
+        TimerDisp.Enabled = True
+        timestop()
+        GameTimer.Enabled = True
+        Return True
+    End Function
 End Class
