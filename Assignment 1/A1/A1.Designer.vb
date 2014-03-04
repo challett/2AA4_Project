@@ -84,32 +84,32 @@ Partial Class Form1
         '
         Me.NewGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StandardToolStripMenuItem, Me.CustomToolStripMenuItem})
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.NewGameToolStripMenuItem.Text = "New Game"
         '
         'StandardToolStripMenuItem
         '
         Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
-        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.StandardToolStripMenuItem.Text = "Standard"
         '
         'CustomToolStripMenuItem
         '
         Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
-        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.CustomToolStripMenuItem.Text = "Custom"
         '
         'PauseGame
         '
         Me.PauseGame.Enabled = False
         Me.PauseGame.Name = "PauseGame"
-        Me.PauseGame.Size = New System.Drawing.Size(152, 22)
+        Me.PauseGame.Size = New System.Drawing.Size(139, 22)
         Me.PauseGame.Text = "Pause Game"
         '
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
         '
         'ViewToolStripMenuItem
@@ -135,12 +135,12 @@ Partial Class Form1
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
         'ExitMode
         '
-        Me.ExitMode.Location = New System.Drawing.Point(217, 593)
+        Me.ExitMode.Location = New System.Drawing.Point(195, 593)
         Me.ExitMode.Name = "ExitMode"
         Me.ExitMode.Size = New System.Drawing.Size(111, 23)
         Me.ExitMode.TabIndex = 22
@@ -201,7 +201,7 @@ Partial Class Form1
         'CustomPiece
         '
         Me.CustomPiece.BackColor = System.Drawing.Color.Transparent
-        Me.CustomPiece.Location = New System.Drawing.Point(129, 566)
+        Me.CustomPiece.Location = New System.Drawing.Point(123, 570)
         Me.CustomPiece.Name = "CustomPiece"
         Me.CustomPiece.Size = New System.Drawing.Size(53, 50)
         Me.CustomPiece.TabIndex = 23
@@ -251,7 +251,7 @@ Partial Class Form1
         '
         Me.CustomInfo.AutoSize = True
         Me.CustomInfo.BackColor = System.Drawing.Color.Transparent
-        Me.CustomInfo.Location = New System.Drawing.Point(188, 566)
+        Me.CustomInfo.Location = New System.Drawing.Point(170, 579)
         Me.CustomInfo.Name = "CustomInfo"
         Me.CustomInfo.Size = New System.Drawing.Size(209, 13)
         Me.CustomInfo.TabIndex = 28

@@ -66,7 +66,7 @@
         ThisPB = sender
         If m_custom = True And m_standard = False Then
             ThisPB.Image = CustomPiece.Image
-
+            GameTimer.Enabled = False
             If LimitCheckBLK() Then
                 ThisPB.Image = Nothing
                 MsgBox("Black 12 Piece Limit Enforced")
@@ -118,9 +118,11 @@
     Private Sub CustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomToolStripMenuItem.Click
         m_custom = True
         m_standard = False
+        MakeInvis()
         CustomPiece.Visible = True
         ExitMode.Visible = True
         CustomInfo.Visible = True
+        TimerDisp.Visible = False
         CustomPiece.Image = red.Image
         timestop()
         For i = 0 To 31
@@ -169,6 +171,8 @@
 
     Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click
         TimerDisp.Visible = True
+        TimerDisp.Enabled = True
+        timestop()
         GameTimer.Enabled = True
 
         m_custom = False
@@ -265,9 +269,11 @@
         ExitMode.Visible = False
         GameTimer.Enabled = False
         TimerDisp.Visible = False
+        Return True
     End Function
     Function timestop()
         e_Seconds = 0
         e_Minutes = 0
+        Return True
     End Function
 End Class
