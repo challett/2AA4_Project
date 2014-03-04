@@ -247,6 +247,9 @@
     End Sub
 
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
+        If Me.Visible = False Then
+            GameTimer.Enabled = False
+        End If
 
         e_Seconds += 1
         If e_Seconds > 59 Then
@@ -283,4 +286,11 @@
         GameTimer.Enabled = True
         Return True
     End Function
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
+        If Me.Visible = False Then
+            GameTimer.Enabled = False
+        Else
+        End If
+    End Sub
 End Class
