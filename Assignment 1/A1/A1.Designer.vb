@@ -84,7 +84,7 @@ Partial Class Form1
         '
         Me.NewGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StandardToolStripMenuItem, Me.CustomToolStripMenuItem})
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewGameToolStripMenuItem.Text = "New Game"
         '
         'StandardToolStripMenuItem
@@ -101,14 +101,15 @@ Partial Class Form1
         '
         'PauseGame
         '
+        Me.PauseGame.Enabled = False
         Me.PauseGame.Name = "PauseGame"
-        Me.PauseGame.Size = New System.Drawing.Size(139, 22)
+        Me.PauseGame.Size = New System.Drawing.Size(152, 22)
         Me.PauseGame.Text = "Pause Game"
         '
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
         '
         'ViewToolStripMenuItem
@@ -121,7 +122,7 @@ Partial Class Form1
         'BackgroundToolStripMenuItem
         '
         Me.BackgroundToolStripMenuItem.Name = "BackgroundToolStripMenuItem"
-        Me.BackgroundToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
+        Me.BackgroundToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.BackgroundToolStripMenuItem.Text = "Background"
         '
         'SettingsToolStripMenuItem
@@ -134,7 +135,7 @@ Partial Class Form1
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
         'ExitMode

@@ -2,8 +2,8 @@
     Dim c_trackarray(0 To 31) As PictureBox
     Dim m_custom As Boolean
     Dim m_standard As Boolean
-    Dim e_Seconds As Integer
-    Dim e_Minutes As Integer
+    Dim c_Seconds As Integer
+    Dim c_Minutes As Integer
     Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundToolStripMenuItem.Click
         Form2.Show()
     End Sub
@@ -34,7 +34,7 @@
         m_standard = True
         m_custom = True
         Dim c_track As Integer
-        Dim e_Initialx As Integer
+        Dim c_Initialx As Integer
         c_track = 0
 
         For i = 0 To 7 'Drawing Image Boxes
@@ -47,11 +47,11 @@
                 c_trackarray(c_track).BackColor() = Color.Transparent
                 c_trackarray(c_track).BringToFront()
                 If (i Mod 2 = 0) Then
-                    e_Initialx = 50
+                    c_Initialx = 50
                 Else
-                    e_Initialx = 0
+                    c_Initialx = 0
                 End If
-                c_trackarray(c_track).Location = New System.Drawing.Point(50 + e_Initialx + 100 * j, 135 + 50 * i)
+                c_trackarray(c_track).Location = New System.Drawing.Point(50 + c_Initialx + 100 * j, 135 + 50 * i)
                 c_track += 1
             Next
         Next
@@ -131,24 +131,29 @@
         Next
     End Sub
 
+    Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click 'Finished Setup
+        MsgBox("Game Has Began and the Timer Will Start Now")
+        Call gamebegin()
+    End Sub
+
     Private Sub PauseGame_Click(sender As Object, e As EventArgs) Handles PauseGame.Click
-        If PauseGame.Pressed = True Then
-            Form3.Show() 'New Form Used
-            Me.Hide() 'Removes User Interaction
-        End If
+        '   If PauseGame.Pressed = True Then
+        '      Form3.Show() 'New Form Used
+        '     Me.Hide() 'Removes User Interaction
+        'End If
     End Sub
 
     Private Sub Form1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
 
         ' Quit is "Q"
-        If e.KeyCode = Keys.Q Then
-            Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", "Quit", MessageBoxButtons.YesNo)
-            If result = DialogResult.No Then
-                Form2.Close()
-            ElseIf result = DialogResult.Yes Then
-                End
-            End If
-        End If
+        'If e.KeyCode = Keys.Q Then
+        'Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", "Quit", MessageBoxButtons.YesNo)
+        'If result = DialogResult.No Then
+        'Form2.Close()
+        'ElseIf result = DialogResult.Yes Then
+        'End
+        'End If
+        'End If
 
     End Sub
 
@@ -161,20 +166,16 @@
         MakeInvis() 'Call to make unecessary pieces disappear
     End Sub
 
-    Private Sub ExitMode_Click(sender As Object, e As EventArgs) Handles ExitMode.Click 'Finished Setup
-        MsgBox("Game Has Began and the Timer Will Start Now")
-        Call gamebegin()
-    End Sub
     Function LimitCheckBLK() As Boolean
-        Dim e_blackCount
-        e_blackCount = 0
+        Dim c_blackCount
+        c_blackCount = 0
 
         For i = 0 To 31
             If c_trackarray(i).Image Is blkking.Image Or c_trackarray(i).Image Is black.Image Then
-                e_blackCount += 1
+                c_blackCount += 1
             End If
         Next
-        If e_blackCount < 13 Then 'Limit Check Red Logic
+        If c_blackCount < 13 Then 'Limit Check Red Logic
             LimitCheckBLK = False
         Else
             LimitCheckBLK = True
@@ -182,15 +183,15 @@
 
     End Function
     Function LimitCheckRED() As Boolean 'Limit Checks
-        Dim e_redCount
-        e_redCount = 0
+        Dim c_redCount
+        c_redCount = 0
 
         For i = 0 To 31
             If c_trackarray(i).Image Is kingred.Image Or c_trackarray(i).Image Is red.Image Then
-                e_redCount += 1
+                c_redCount += 1
             End If
         Next
-        If e_redCount < 13 Then 'Logic is 13 because of Internal workings, piece is placed first then cancelled if passed
+        If c_redCount < 13 Then 'Logic is 13 because of Internal workings, piece is placed first then cancelled if passed
             LimitCheckRED = False
         Else
             LimitCheckRED = True
@@ -251,13 +252,13 @@
             GameTimer.Enabled = False
         End If
 
-        e_Seconds += 1
-        If e_Seconds > 59 Then
-            e_Minutes += 1
-            e_Seconds = 0
+        c_Seconds += 1
+        If c_Seconds > 59 Then
+            c_Minutes += 1
+            c_Seconds = 0
         End If
 
-        TimerDisp.Text = "Time Elapsed: " + Convert.ToString(e_Minutes) + ":" + Convert.ToString(e_Seconds)
+        TimerDisp.Text = "Time Elapsed: " + Convert.ToString(c_Minutes) + ":" + Convert.ToString(c_Seconds)
     End Sub
 
     Function MakeInvis() 'Custom Setup buttons, must be invis when other modes selected
@@ -270,8 +271,8 @@
     End Function
 
     Function timestop() 'Resets Timing Variables
-        e_Seconds = 0
-        e_Minutes = 0
+        c_Seconds = 0
+        c_Minutes = 0
         Return True
     End Function
     Function gamebegin() 'qualities that must ben true when game starts
