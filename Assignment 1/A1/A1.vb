@@ -299,7 +299,7 @@
 
     Private Sub SaveGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveGameToolStripMenuItem.Click
         Dim writer As System.IO.StreamWriter = _
-        New System.IO.StreamWriter("../SavedGame2.txt")
+        New System.IO.StreamWriter("../SavedGame.txt")
         For i = 0 To gamesetup.Length - 1
             writer.WriteLine(gamesetup(i))
         Next
