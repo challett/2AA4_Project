@@ -4,6 +4,9 @@
     Dim m_standard As Boolean
     Dim c_Seconds As Integer
     Dim c_Minutes As Integer
+    Dim gamesetup(0 To 31) As Integer 'This is How Save will be Implemented Later
+
+
     Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundToolStripMenuItem.Click
         Form2.Show()
     End Sub
@@ -62,7 +65,6 @@
 
     Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
         Dim ThisPB As PictureBox
-        Dim gamesetup(0 To 31) As Integer 'This is How Save will be Implemented Later
 
         ThisPB = sender
         If m_custom = True And m_standard = False Then 'Custom State
@@ -293,5 +295,23 @@
             GameTimer.Enabled = False
         Else
         End If
+    End Sub
+
+    Private Sub SaveGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveGameToolStripMenuItem.Click
+        Dim writer As System.IO.StreamWriter = _
+        New System.IO.StreamWriter("../SavedGame2.txt")
+        For i = 0 To gamesetup.Length - 1
+            writer.WriteLine(gamesetup(i))
+        Next
+        writer.Close()
+    End Sub
+
+    Private Sub LoadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadToolStripMenuItem.Click
+        Dim reader As System.IO.StreamReader = _
+        New System.IO.StreamReader("../SavedGame.txt")
+        For i = 0 To gamesetup.Length - 1
+            gamesetup(i) = reader.ReadLine
+        Next
+        reader.Close()
     End Sub
 End Class
