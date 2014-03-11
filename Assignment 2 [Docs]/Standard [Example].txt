@@ -1,0 +1,47 @@
+mode = 'Standard'
+
+------- POSITIONS -------
+A1 = "Red"
+A3 = "Red"
+A5 = "-"
+A7 = "Black"
+
+B2 = "Red"
+B4 = "-"
+B6 = "Black"
+B8 = "Black"
+
+C1 = "Red"
+C3 = "Red"
+C5 = "-"
+C7 = "Black"
+
+D2 = "Red"
+D4 = "-"
+D6 = "Black"
+D8 = "Black"
+
+E1 = "Red"
+E3 = "Red"
+E5 = "-"
+E7 = "Black"
+
+F2 = "Red"
+F4 = "-"
+F6 = "Black"
+F8 = "Black"
+
+G1 = "Red"
+G3 = "Red"
+G5 = "-"
+G7 = "Black"
+
+------- POINTS -------
+ScoreRed = "0"
+ScoreBlack = "0"
+
+------- TIME -------
+TimeElapsed = "0:00"     ' The time variable should be replaced by the actual time value (GameTimer or whatever it is)
+
+------- BACKGROUND -------
+Background = "LayoutGreen"     ' Again, should replace with global variable for background (this entire parameter is however not crucial)
