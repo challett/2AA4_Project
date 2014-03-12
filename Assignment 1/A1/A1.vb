@@ -310,7 +310,7 @@
         Dim reader As System.IO.StreamReader = _
         New System.IO.StreamReader("../SavedGame.txt")
         For i = 0 To gamesetup.Length - 1
-            gamesetup(i) = reader.ReadLine.Replace("\n","")
+            gamesetup(i) = Replace(reader.ReadLine,"\n","")
         Next
         reader.Close()
     End Sub
