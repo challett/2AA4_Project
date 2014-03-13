@@ -6,7 +6,7 @@
 
     Private Sub GameResume_Click(sender As Object, e As EventArgs) Handles GameResume.Click
         Me.Hide()
-        Form1.Show()
+        CustomMode.Show()
 
         'PAUSE TIMER
 

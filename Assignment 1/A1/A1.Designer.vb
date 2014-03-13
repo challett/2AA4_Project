@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class CustomMode
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,12 +23,13 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CustomMode))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StandardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PauseGame = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -52,9 +53,7 @@ Partial Class Form1
         Me.blkking = New System.Windows.Forms.PictureBox()
         Me.CustomInfo = New System.Windows.Forms.Label()
         Me.ErrorClick = New System.Windows.Forms.PictureBox()
-        Me.GameTimer = New System.Windows.Forms.Timer(Me.components)
         Me.TimerDisp = New System.Windows.Forms.Label()
-        Me.LoadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.RightClick.SuspendLayout()
         CType(Me.CustomPiece, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,38 +85,44 @@ Partial Class Form1
         '
         Me.NewGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StandardToolStripMenuItem, Me.CustomToolStripMenuItem, Me.LoadToolStripMenuItem})
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.NewGameToolStripMenuItem.Text = "New Game"
         '
         'StandardToolStripMenuItem
         '
         Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
-        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.StandardToolStripMenuItem.Text = "Standard"
         '
         'CustomToolStripMenuItem
         '
         Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
-        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.CustomToolStripMenuItem.Text = "Custom"
+        '
+        'LoadToolStripMenuItem
+        '
+        Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
+        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.LoadToolStripMenuItem.Text = "Load"
         '
         'PauseGame
         '
         Me.PauseGame.Enabled = False
         Me.PauseGame.Name = "PauseGame"
-        Me.PauseGame.Size = New System.Drawing.Size(152, 22)
+        Me.PauseGame.Size = New System.Drawing.Size(139, 22)
         Me.PauseGame.Text = "Pause Game"
         '
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
         '
         'SaveGameToolStripMenuItem
         '
         Me.SaveGameToolStripMenuItem.Name = "SaveGameToolStripMenuItem"
-        Me.SaveGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.SaveGameToolStripMenuItem.Text = "Save Game"
         '
         'ViewToolStripMenuItem
@@ -154,7 +159,6 @@ Partial Class Form1
         Me.ExitMode.TabIndex = 22
         Me.ExitMode.Text = "Complete Setup"
         Me.ExitMode.UseVisualStyleBackColor = True
-        Me.ExitMode.Visible = False
         '
         'RightClick
         '
@@ -209,6 +213,7 @@ Partial Class Form1
         'CustomPiece
         '
         Me.CustomPiece.BackColor = System.Drawing.Color.Transparent
+        Me.CustomPiece.Image = Global.WindowsApplication1.My.Resources.Resources.BP_shadow_
         Me.CustomPiece.Location = New System.Drawing.Point(123, 570)
         Me.CustomPiece.Name = "CustomPiece"
         Me.CustomPiece.Size = New System.Drawing.Size(53, 50)
@@ -218,7 +223,7 @@ Partial Class Form1
         'red
         '
         Me.red.Image = Global.WindowsApplication1.My.Resources.Resources.RP_shadow_
-        Me.red.Location = New System.Drawing.Point(424, 12)
+        Me.red.Location = New System.Drawing.Point(436, 27)
         Me.red.Name = "red"
         Me.red.Size = New System.Drawing.Size(53, 50)
         Me.red.TabIndex = 24
@@ -228,7 +233,7 @@ Partial Class Form1
         'black
         '
         Me.black.Image = Global.WindowsApplication1.My.Resources.Resources.BP_shadow_
-        Me.black.Location = New System.Drawing.Point(424, 12)
+        Me.black.Location = New System.Drawing.Point(436, 27)
         Me.black.Name = "black"
         Me.black.Size = New System.Drawing.Size(53, 50)
         Me.black.TabIndex = 25
@@ -238,7 +243,7 @@ Partial Class Form1
         'kingred
         '
         Me.kingred.Image = Global.WindowsApplication1.My.Resources.Resources.RP_King__shadow_
-        Me.kingred.Location = New System.Drawing.Point(424, 12)
+        Me.kingred.Location = New System.Drawing.Point(436, 27)
         Me.kingred.Name = "kingred"
         Me.kingred.Size = New System.Drawing.Size(53, 50)
         Me.kingred.TabIndex = 26
@@ -248,7 +253,7 @@ Partial Class Form1
         'blkking
         '
         Me.blkking.Image = Global.WindowsApplication1.My.Resources.Resources.BP_King__shadow_
-        Me.blkking.Location = New System.Drawing.Point(424, 12)
+        Me.blkking.Location = New System.Drawing.Point(436, 27)
         Me.blkking.Name = "blkking"
         Me.blkking.Size = New System.Drawing.Size(53, 50)
         Me.blkking.TabIndex = 27
@@ -259,12 +264,11 @@ Partial Class Form1
         '
         Me.CustomInfo.AutoSize = True
         Me.CustomInfo.BackColor = System.Drawing.Color.Transparent
-        Me.CustomInfo.Location = New System.Drawing.Point(170, 579)
+        Me.CustomInfo.Location = New System.Drawing.Point(172, 579)
         Me.CustomInfo.Name = "CustomInfo"
         Me.CustomInfo.Size = New System.Drawing.Size(209, 13)
         Me.CustomInfo.TabIndex = 28
         Me.CustomInfo.Text = "Click On the Left Picture to Change Pieces"
-        Me.CustomInfo.Visible = False
         '
         'ErrorClick
         '
@@ -274,11 +278,6 @@ Partial Class Form1
         Me.ErrorClick.Size = New System.Drawing.Size(406, 409)
         Me.ErrorClick.TabIndex = 29
         Me.ErrorClick.TabStop = False
-        '
-        'GameTimer
-        '
-        Me.GameTimer.Enabled = True
-        Me.GameTimer.Interval = 1000
         '
         'TimerDisp
         '
@@ -290,13 +289,7 @@ Partial Class Form1
         Me.TimerDisp.TabIndex = 30
         Me.TimerDisp.Visible = False
         '
-        'LoadToolStripMenuItem
-        '
-        Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
-        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.LoadToolStripMenuItem.Text = "Load"
-        '
-        'Form1
+        'CustomMode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
@@ -318,7 +311,7 @@ Partial Class Form1
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximumSize = New System.Drawing.Size(600, 663)
         Me.MinimumSize = New System.Drawing.Size(517, 39)
-        Me.Name = "Form1"
+        Me.Name = "CustomMode"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "Ultimate Checkers"
         Me.MenuStrip1.ResumeLayout(False)
@@ -361,7 +354,6 @@ Partial Class Form1
     Friend WithEvents blkking As System.Windows.Forms.PictureBox
     Friend WithEvents CustomInfo As System.Windows.Forms.Label
     Friend WithEvents ErrorClick As System.Windows.Forms.PictureBox
-    Friend WithEvents GameTimer As System.Windows.Forms.Timer
     Friend WithEvents TimerDisp As System.Windows.Forms.Label
     Friend WithEvents SaveGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
