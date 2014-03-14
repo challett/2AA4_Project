@@ -1,0 +1,34 @@
+#top
+if picturebox == 0 or 1 or 2{
+	if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 5){
+		move piece to clickedBox
+	}
+	else{
+		illegalMoveError
+	}	
+if picturebox == 3{				#space H8
+	if clickedBox == picturebox + 4{	#space G7
+		move piece to clickedBox
+	}
+	else{
+		illegalMoveError
+	}
+
+#bottom
+if picturebox == 29 or 30 or 31{		
+	if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 5){
+		move piece to clickedBox
+	}
+	else{
+		illegalMoveError
+	}
+if picturebox == 28{				#space A1
+	if clickedBox == picturebox - 4{	#space B2
+		move piece to clickedBox
+	}
+	else{
+		illegalMoveError
+	}
+ 
+		
+	
