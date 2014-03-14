@@ -1,0 +1,82 @@
+if tile[4] 
+   if blackpiece 
+      then blackpiece == tile[8]
+   end if 
+   if redpiece
+      then redpiece == tile[0]
+   end if
+   if blackpieceK, redpieceK
+      then blackpieceK, redpieceK == tile[0]
+      else blackpieceK, redpieceK == tile[8]
+   end if
+end if
+
+
+if tile[11] 
+   if blackpiece 
+      then blackpiece == tile[15]
+   end if 
+   if redpiece
+      then redpiece == tile[7]
+   end if
+   if blackpieceK, redpieceK
+      then blackpieceK, redpieceK == tile[7]
+      else blackpieceK, redpieceK == tile[15]
+   end if
+end if
+
+
+if tile[12] 
+   if blackpiece 
+      then blackpiece == tile[16]
+   end if 
+   if redpiece
+      then redpiece == tile[8]
+   end if
+   if blackpieceK, redpieceK
+      then blackpieceK, redpieceK == tile[8]
+      else blackpieceK, redpieceK == tile[16]
+   end if
+end if
+
+
+if tile[19] 
+   if blackpiece 
+      then blackpiece == tile[23]
+   end if 
+   if redpiece
+      then redpiece == tile[15]
+   end if
+   if blackpieceK, redpieceK
+      then blackpieceK, redpieceK == tile[15]
+      else blackpieceK, redpieceK == tile[23]
+   end if
+end if
+
+
+if tile[20] 
+   if blackpiece 
+      then blackpiece == tile[24]
+   end if 
+   if redpiece
+      then redpiece == tile[16]
+   end if
+   if blackpieceK, redpieceK
+      then blackpieceK, redpieceK == tile[16]
+      else blackpieceK, redpieceK == tile[24]
+   end if
+end if
+
+
+if tile[27] 
+   if blackpiece 
+      then blackpiece == tile[31]
+   end if 
+   if redpiece
+      then redpiece == tile[23]
+   end if
+   if blackpieceK, redpieceK
+      then blackpieceK, redpieceK == tile[23]
+      else blackpieceK, redpieceK == tile[31]
+   end if
+end if
