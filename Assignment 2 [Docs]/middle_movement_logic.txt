@@ -2,7 +2,7 @@
 
 if piece.colour == black{
 	if (5<=picturebox<=10) or (13<=picturebox<=18) or (21<=picturebox<=26){
-		if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 5){
+		if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 3){
 			move piece to clicked box
 		}
 		else{
@@ -13,7 +13,7 @@ if piece.colour == black{
 
 if piece.colour == red{
 	if (5<=picturebox<=10) or (13<=picturebox<=18) or (21<=picturebox<=26){
-		if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 5){
+		if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 3){
 			move piece to clicked box
 		}
 		else{
