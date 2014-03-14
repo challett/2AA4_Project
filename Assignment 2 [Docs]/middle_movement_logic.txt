@@ -1,0 +1,23 @@
+#middle piece movement logic
+
+if piece.colour == black{
+	if (5<=picturebox<=10) or (13<=picturebox<=18) or (21<=picturebox<=26){
+		if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 5){
+			move piece to clicked box
+		}
+		else{
+			illegalMoveError
+		}
+	}
+}
+
+if piece.colour == red{
+	if (5<=picturebox<=10) or (13<=picturebox<=18) or (21<=picturebox<=26){
+		if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 5){
+			move piece to clicked box
+		}
+		else{
+			illegalMoveError
+		}
+	}
+}
