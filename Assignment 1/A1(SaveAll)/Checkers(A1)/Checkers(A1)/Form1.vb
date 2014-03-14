@@ -1,5 +1,7 @@
 ﻿Public Class Play
     Dim c_trackarray(0 To 31) As PictureBox
+    Dim movecount As Integer
+    Dim current As PictureBox
     Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         start_Menu.Close()
         CustomMode.Close()
@@ -8,10 +10,10 @@
         Dim c_track As Integer
         Dim c_Initialx As Integer
         c_track = 0
-
         For i = 0 To 7 'Drawing Image Boxes
             For j = 0 To 3
                 c_trackarray(c_track) = New PictureBox()
+                c_trackarray(c_track).Name() = "PictureBox" + Convert.ToString(c_track)
                 Me.Controls.Add(c_trackarray(c_track))
                 c_trackarray(c_track).Image = Nothing
                 c_trackarray(c_track).Height = 50
@@ -45,6 +47,23 @@
     End Sub
     Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
         Dim ThisPB As PictureBox
+        ThisPB = sender
+        If Not (ThisPB.Image Is Nothing) Then
+
+            If movecount = 0 Then
+                current = ThisPB
+                movecount += 1
+            End If
+        End If
+        If ThisPB.Image Is Nothing Then
+            If movecount >= 1 Then
+                ThisPB.Image = CurrentPiece.Image
+                current.Image = Nothing
+                movecount = 0
+            End If
+        End If
+        CurrentPiece.Image = ThisPB.Image
+        CurrentInfo.Text = ThisPB.Name
 
     End Sub
     Function makegame(ByVal Array() As Integer)

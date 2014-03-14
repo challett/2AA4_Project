@@ -26,10 +26,14 @@ Partial Class Play
         Me.black = New System.Windows.Forms.PictureBox()
         Me.red = New System.Windows.Forms.PictureBox()
         Me.kingred = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.CurrentPiece = New System.Windows.Forms.PictureBox()
+        Me.CurrentInfo = New System.Windows.Forms.Label()
         CType(Me.blackking, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.black, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.kingred, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'blackking
@@ -72,12 +76,43 @@ Partial Class Play
         Me.kingred.TabStop = False
         Me.kingred.Visible = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(397, 590)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Label1"
+        '
+        'CurrentPiece
+        '
+        Me.CurrentPiece.BackColor = System.Drawing.Color.Transparent
+        Me.CurrentPiece.Location = New System.Drawing.Point(141, 573)
+        Me.CurrentPiece.Name = "CurrentPiece"
+        Me.CurrentPiece.Size = New System.Drawing.Size(50, 50)
+        Me.CurrentPiece.TabIndex = 5
+        Me.CurrentPiece.TabStop = False
+        '
+        'CurrentInfo
+        '
+        Me.CurrentInfo.AutoSize = True
+        Me.CurrentInfo.BackColor = System.Drawing.Color.Transparent
+        Me.CurrentInfo.Font = New System.Drawing.Font("Algerian", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CurrentInfo.Location = New System.Drawing.Point(202, 573)
+        Me.CurrentInfo.Name = "CurrentInfo"
+        Me.CurrentInfo.Size = New System.Drawing.Size(0, 18)
+        Me.CurrentInfo.TabIndex = 6
+        '
         'Play
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LayoutBlueM
         Me.ClientSize = New System.Drawing.Size(501, 624)
+        Me.Controls.Add(Me.CurrentInfo)
+        Me.Controls.Add(Me.CurrentPiece)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.kingred)
         Me.Controls.Add(Me.red)
         Me.Controls.Add(Me.black)
@@ -89,11 +124,16 @@ Partial Class Play
         CType(Me.black, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.kingred, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents blackking As System.Windows.Forms.PictureBox
     Friend WithEvents black As System.Windows.Forms.PictureBox
     Friend WithEvents red As System.Windows.Forms.PictureBox
     Friend WithEvents kingred As System.Windows.Forms.PictureBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents CurrentPiece As System.Windows.Forms.PictureBox
+    Friend WithEvents CurrentInfo As System.Windows.Forms.Label
 End Class
