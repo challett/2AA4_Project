@@ -1,23 +1,58 @@
 #middle piece movement logic
 
-if piece.colour == black{
-	if (5<=picturebox<=10) or (13<=picturebox<=18) or (21<=picturebox<=26){
-		if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 3){
+if piece.isKing == true{
+	if (5<=picturebox<=7) or (13<=picturebox<=15) or (21<=picturebox<=23){
+		if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 3) or (clickedBox == picturebox - 4) or (clickedBox == picturebox - 5){
 			move piece to clicked box
 		}
 		else{
 			illegalMoveError
+		}
+	}
+	if (8<=picturebox<=10) or (16<=picturebox<=18) or (24<=picturebox<=26){
+		if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 3) or (clickedBox == picturebox + 4) or (clickedBox == picturebox + 5){
+			move piece to clicked box
+		}
+		else{
+			illegalMoveError
+		}
+	}
+} 
+else{	
+	if piece.colour == black{
+		if (5<=picturebox<=7) or (13<=picturebox<=15) or (21<=picturebox<=23){
+			if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 3){
+				move piece to clicked box
+			}
+			else{
+				illegalMoveError
+			}
+		if (8<=picturebox<=10) or (16<=picturebox<=18) or (24<=picturebox<=26){
+			if (clickedBox == picturebox + 4) or (clickedBox == picturebox + 5){
+				move piece to clicked box
+			} 
+			else{
+				illegalMoveError
+			}
+		}
+	}
+	if piece.colour == red{
+		if (5<=picturebox<=7) or (13<=picturebox<=15) or (21<=picturebox<=23){
+			if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 5){
+				move piece to clicked box
+			}
+			else{
+				illegalMoveError
+			}
+		if (8<=picturebox<=10) or (16<=picturebox<=18) or (24<=picturebox<=26){
+			if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 3){
+				move piece to clicked box
+			} 
+			else{
+				illegalMoveError
+			}
 		}
 	}
 }
 
-if piece.colour == red{
-	if (5<=picturebox<=10) or (13<=picturebox<=18) or (21<=picturebox<=26){
-		if (clickedBox == picturebox - 4) or (clickedBox == picturebox - 3){
-			move piece to clicked box
-		}
-		else{
-			illegalMoveError
-		}
-	}
-}
+Enjoy the beautiful Java syntax :-) 
