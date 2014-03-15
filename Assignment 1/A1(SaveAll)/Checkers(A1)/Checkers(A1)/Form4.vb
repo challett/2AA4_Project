@@ -1,12 +1,11 @@
 ﻿Public Class start_Menu
     Dim gamesetup(0 To 32) As Integer
     Dim gamesetupL(0 To 32) As Integer
-    Private Sub Quit_Click(sender As Object, e As EventArgs) Handles Quit.Click
-        Me.Close()
-    End Sub
+
     Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
         ButtonC.Visible = True
         ButtonS.Visible = True
+
     End Sub
 
     Private Sub start_Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load

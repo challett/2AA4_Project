@@ -313,7 +313,7 @@ Partial Class CustomMode
         Me.MinimumSize = New System.Drawing.Size(517, 39)
         Me.Name = "CustomMode"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.Text = "Ultimate Checkers"
+        Me.Text = "5"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.RightClick.ResumeLayout(False)
