@@ -2,6 +2,8 @@
     Dim c_trackarray(0 To 31) As PictureBox
     Dim movecount As Integer
     Dim current As PictureBox
+    Dim CB1, CB2, CR1, CR2 As Integer
+    Dim BlkT, RedT As Boolean
     Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         start_Menu.Close()
         CustomMode.Close()
@@ -48,22 +50,75 @@
     Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
         Dim ThisPB As PictureBox
         ThisPB = sender
-        If Not (ThisPB.Image Is Nothing) Then
+        Dim BadNum As Integer
+        Dim BadRed(0 To 11) As Integer
+        Dim BadBlack(0 To 11) As Integer
 
+
+        BadBlack = {4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23}
+        BadRed = {8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27}
+
+        If Not (ThisPB.Image Is Nothing) Then
+            movecount = 0
             If movecount = 0 Then
                 current = ThisPB
-                movecount += 1
+                CurrentPiece.Image = ThisPB.Image
+                CurrentInfo.Text = Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", ""))
+                BadNum = Convert.ToInt32(Replace(current.Name, "PictureBox", ""))
             End If
+            If CurrentPiece.Image Is red.Image Then
+                If BadRed.Contains(BadNum) Then
+                    RedT = True
+                Else
+                    RedT = False
+                End If
+            ElseIf CurrentPiece.Image Is black.Image Then
+                If BadBlack.Contains(BadNum) Then
+                    BlkT = True
+                Else
+                    BlkT = False
+                End If
+            End If
+            If RedT = True Then
+                CR1 = 3
+                CR2 = 4
+            Else
+                CR1 = 4
+                CR2 = 5
+            End If
+            If BlkT = True Then
+                CB1 = 3
+                CB2 = 4
+            Else
+                CB1 = 4
+                CB2 = 5
+            End If
+            movecount = 1
         End If
+
         If ThisPB.Image Is Nothing Then
-            If movecount >= 1 Then
-                ThisPB.Image = CurrentPiece.Image
-                current.Image = Nothing
-                movecount = 0
+            If movecount = 1 Then
+                If CurrentPiece.Image Is black.Image Then
+                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1) Or Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2) Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                    End If
+                ElseIf CurrentPiece.Image Is red.Image Then
+                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Or (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                    End If
+                ElseIf CurrentPiece.Image Is kingred.Image Or CurrentPiece.Image Is blackking.Image Then
+                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Or (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Or Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1 Or Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2 Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                    End If
+                End If
             End If
         End If
-        CurrentPiece.Image = ThisPB.Image
-        CurrentInfo.Text = ThisPB.Name
 
     End Sub
     Function makegame(ByVal Array() As Integer)
@@ -80,5 +135,6 @@
                 c_trackarray(i).Image = Nothing
             End If
         Next
+
     End Function
 End Class
