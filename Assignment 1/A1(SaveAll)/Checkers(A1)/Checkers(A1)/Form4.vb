@@ -11,6 +11,9 @@
     Private Sub start_Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ButtonC.Visible = False
         ButtonS.Visible = False
+        For i = 0 To 32
+            gamesetup(i) = 0
+        Next
     End Sub
 
     Private Sub ButtonS_Click(sender As Object, e As EventArgs) Handles ButtonS.Click
@@ -38,7 +41,22 @@
     End Function
 
     Private Sub Load_Click(sender As Object, e As EventArgs) Handles Load.Click
-        gamesetupL(32) = 10
+        Try
+            gamesetupL(32) = 10
+            Dim reader As System.IO.StreamReader = _
+            New System.IO.StreamReader("../SavedGame.txt")
+            For i = 0 To gamesetup.Length - 2
+                gamesetupL(i) = Replace(reader.ReadLine, "\n", "")
+            Next
+            reader.Close()
+            Me.Hide()
+            Play.Show()
+        Catch
+            MsgBox("No Saved Game!")
+        End Try
 
     End Sub
+    Public Function GetsetupL()
+        Return gamesetupL
+    End Function
 End Class

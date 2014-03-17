@@ -26,15 +26,7 @@ Partial Class CustomMode
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CustomMode))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StandardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PauseGame = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitMode = New System.Windows.Forms.Button()
@@ -67,7 +59,7 @@ Partial Class CustomMode
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.Control
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.ViewToolStripMenuItem, Me.SettingsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.SettingsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(501, 24)
@@ -76,67 +68,16 @@ Partial Class CustomMode
         '
         'MenuToolStripMenuItem
         '
-        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewGameToolStripMenuItem, Me.PauseGame, Me.QuitGameToolStripMenuItem, Me.SaveGameToolStripMenuItem})
+        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.QuitGameToolStripMenuItem})
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
         Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
-        'NewGameToolStripMenuItem
-        '
-        Me.NewGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StandardToolStripMenuItem, Me.CustomToolStripMenuItem, Me.LoadToolStripMenuItem})
-        Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
-        Me.NewGameToolStripMenuItem.Text = "New Game"
-        '
-        'StandardToolStripMenuItem
-        '
-        Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
-        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
-        Me.StandardToolStripMenuItem.Text = "Standard"
-        '
-        'CustomToolStripMenuItem
-        '
-        Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
-        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
-        Me.CustomToolStripMenuItem.Text = "Custom"
-        '
-        'LoadToolStripMenuItem
-        '
-        Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
-        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
-        Me.LoadToolStripMenuItem.Text = "Load"
-        '
-        'PauseGame
-        '
-        Me.PauseGame.Enabled = False
-        Me.PauseGame.Name = "PauseGame"
-        Me.PauseGame.Size = New System.Drawing.Size(139, 22)
-        Me.PauseGame.Text = "Pause Game"
-        '
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
-        '
-        'SaveGameToolStripMenuItem
-        '
-        Me.SaveGameToolStripMenuItem.Name = "SaveGameToolStripMenuItem"
-        Me.SaveGameToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
-        Me.SaveGameToolStripMenuItem.Text = "Save Game"
-        '
-        'ViewToolStripMenuItem
-        '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BackgroundToolStripMenuItem})
-        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.ViewToolStripMenuItem.Text = "View"
-        '
-        'BackgroundToolStripMenuItem
-        '
-        Me.BackgroundToolStripMenuItem.Name = "BackgroundToolStripMenuItem"
-        Me.BackgroundToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
-        Me.BackgroundToolStripMenuItem.Text = "Background"
         '
         'SettingsToolStripMenuItem
         '
@@ -148,7 +89,7 @@ Partial Class CustomMode
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
         'ExitMode
@@ -313,7 +254,7 @@ Partial Class CustomMode
         Me.MinimumSize = New System.Drawing.Size(517, 39)
         Me.Name = "CustomMode"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.Text = "5"
+        Me.Text = "Custom Set-Up Mode"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.RightClick.ResumeLayout(False)
@@ -329,15 +270,9 @@ Partial Class CustomMode
     End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents MenuToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NewGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PauseGame As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents BackgroundToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ResetToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents QuitGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents StandardToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CustomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitMode As System.Windows.Forms.Button
     Friend WithEvents RightClick As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents BlackPieceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -355,7 +290,5 @@ Partial Class CustomMode
     Friend WithEvents CustomInfo As System.Windows.Forms.Label
     Friend WithEvents ErrorClick As System.Windows.Forms.PictureBox
     Friend WithEvents TimerDisp As System.Windows.Forms.Label
-    Friend WithEvents SaveGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LoadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

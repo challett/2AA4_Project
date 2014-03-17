@@ -180,25 +180,7 @@
     End Sub
 
 
-    Private Sub SaveGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveGameToolStripMenuItem.Click
-        Dim writer As System.IO.StreamWriter = _
-        New System.IO.StreamWriter("../SavedGame.txt")
-        For i = 0 To gamesetup.Length - 1
-            writer.WriteLine(gamesetup(i))
-        Next
-        writer.Close()
-    End Sub
-
-    Private Sub LoadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadToolStripMenuItem.Click
-        Dim reader As System.IO.StreamReader = _
-        New System.IO.StreamReader("../SavedGame.txt")
-        For i = 0 To gamesetup.Length - 1
-            gamesetup(i) = Replace(reader.ReadLine, "\n", "")
-        Next
-        reader.Close()
-    End Sub
-
-    Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundToolStripMenuItem.Click
+    Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs)
         BackGround.Show()
     End Sub
 End Class
