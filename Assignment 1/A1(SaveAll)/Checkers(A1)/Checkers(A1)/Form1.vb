@@ -247,9 +247,10 @@
                 c_trackarray(i).Image = kingred.Image
             End If
         Next
-        For i = 28 To 31
-            If c_trackarray(i) Is black.Image Then
-                c_trackarray(i).Image = blackking.Image
+
+        For j = 28 To 31
+            If c_trackarray(j).Image Is black.Image Then
+                c_trackarray(j).Image = blackking.Image
 
             End If
         Next
