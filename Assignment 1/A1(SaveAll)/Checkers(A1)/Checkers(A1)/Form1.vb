@@ -4,6 +4,12 @@
     Dim current As PictureBox
     Dim CB1, CB2, CR1, CR2 As Integer
     Dim BlkT, RedT As Boolean
+    Dim BadNum As Integer
+    Dim nextB1, nextB2, nextR1, nextR2 As String
+    Dim nextB3, nextB4, nextR3, nextR4 As PictureBox
+    Dim ThisPB As PictureBox
+
+
     Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         start_Menu.Close()
         CustomMode.Close()
@@ -48,15 +54,13 @@
 
     End Sub
     Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
-        Dim ThisPB As PictureBox
         ThisPB = sender
-        Dim BadNum As Integer
         Dim BadRed(0 To 11) As Integer
         Dim BadBlack(0 To 11) As Integer
 
 
-        BadBlack = {4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23}
-        BadRed = {8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27}
+        BadBlack = {4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31}
+        BadRed = {0, 1, 2, 3, 8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27}
 
         If Not (ThisPB.Image Is Nothing) Then
             movecount = 0
@@ -66,13 +70,14 @@
                 CurrentInfo.Text = Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", ""))
                 BadNum = Convert.ToInt32(Replace(current.Name, "PictureBox", ""))
             End If
-            If CurrentPiece.Image Is red.Image Then
+            If CurrentPiece.Image Is red.Image Or CurrentPiece.Image Is kingred.Image Or CurrentPiece.Image Is blackking.Image Then
                 If BadRed.Contains(BadNum) Then
                     RedT = True
                 Else
                     RedT = False
                 End If
-            ElseIf CurrentPiece.Image Is black.Image Then
+            End If
+            If CurrentPiece.Image Is black.Image Or CurrentPiece.Image Is blackking.Image Or CurrentPiece.Image Is kingred.Image Then
                 If BadBlack.Contains(BadNum) Then
                     BlkT = True
                 Else
@@ -96,30 +101,158 @@
             movecount = 1
         End If
 
+
         If ThisPB.Image Is Nothing Then
+            'Finding Next Piece
+            nextB1 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1)
+            nextB2 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2)
+            nextR1 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1)
+            nextR2 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2)
+
+            For i = 0 To 31
+                If c_trackarray(i).Name = nextB1 Then
+                    nextB3 = c_trackarray(i)
+                End If
+            Next
+            For i = 0 To 31
+                If c_trackarray(i).Name = nextB2 Then
+                    nextB4 = c_trackarray(i)
+                End If
+            Next
+            For i = 0 To 31
+                If c_trackarray(i).Name = nextR1 Then
+                    nextR3 = c_trackarray(i)
+                End If
+            Next
+            For i = 0 To 31
+                If c_trackarray(i).Name = nextR2 Then
+                    nextR4 = c_trackarray(i)
+                End If
+            Next
+            'Finding Next Piece
+            ' Detecting Next Piece
+            If CurrentPiece.Image Is black.Image Or CurrentPiece.Image Is blackking.Image Then
+                If nextB3.Image Is red.Image Or nextB3.Image Is kingred.Image Then
+                    CB1 = 7
+                End If
+            End If
+            If CurrentPiece.Image Is black.Image Or CurrentPiece.Image Is blackking.Image Then
+                If nextB4.Image Is red.Image Or nextB4.Image Is kingred.Image Then
+                    CB2 = 9
+                End If
+            End If
+            If CurrentPiece.Image Is blackking.Image Then
+                If nextR3.Image Is red.Image Or nextR3.Image Is kingred.Image Then
+                    CR1 = 7
+                End If
+            End If
+            If CurrentPiece.Image Is blackking.Image Then
+                If nextR4.Image Is red.Image Or nextR4.Image Is kingred.Image Then
+                    CR2 = 9
+                End If
+            End If
+            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            If CurrentPiece.Image Is red.Image Or CurrentPiece.Image Is kingred.Image Then
+                If nextR3.Image Is black.Image Or nextR3.Image Is blackking.Image Then
+                    CR1 = 7
+                End If
+            End If
+            If CurrentPiece.Image Is red.Image Or CurrentPiece.Image Is kingred.Image Then
+                If nextR4.Image Is black.Image Or nextR4.Image Is blackking.Image Then
+                    CR2 = 9
+                End If
+            End If
+            If CurrentPiece.Image Is kingred.Image Then
+                If nextB3.Image Is black.Image Or nextB3.Image Is blackking.Image Then
+                    CB1 = 7
+                End If
+            End If
+            If CurrentPiece.Image Is kingred.Image Then
+                If nextB4.Image Is black.Image Or nextB4.Image Is blackking.Image Then
+                    CB2 = 9
+                End If
+            End If
+            ' Detecting Next Piece
+
+            Label1.Text = nextB3.Name & nextB4.Name & nextR3.Name & nextR4.Name
             If movecount = 1 Then
                 If CurrentPiece.Image Is black.Image Then
-                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1) Or Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2) Then
+                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1) Then
                         ThisPB.Image = CurrentPiece.Image
                         current.Image = Nothing
                         movecount = 0
+                        If CB1 > 5 Then
+                            nextB3.Image = Nothing
+                        End If
+                    ElseIf Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2) Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                        If CB2 > 5 Then
+                            nextB4.Image = Nothing
+                        End If
                     End If
                 ElseIf CurrentPiece.Image Is red.Image Then
-                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Or (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Then
+                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Then
                         ThisPB.Image = CurrentPiece.Image
                         current.Image = Nothing
                         movecount = 0
+                        If CR1 > 5 Then
+                            nextR3.Image = Nothing
+                        End If
+                    ElseIf (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                        If CR2 > 5 Then
+                            nextR4.Image = Nothing
+                        End If
                     End If
-                ElseIf CurrentPiece.Image Is kingred.Image Or CurrentPiece.Image Is blackking.Image Then
-                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Or (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Or Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1 Or Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2 Then
+                Else 'If CurrentPiece.Image Is kingred.Image Or CurrentPiece.Image Is blackking.Image Then
+                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Then
                         ThisPB.Image = CurrentPiece.Image
                         current.Image = Nothing
                         movecount = 0
+                        If CR1 > 5 Then
+                            nextR3.Image = Nothing
+                        End If
+                    ElseIf (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                        If CR2 > 5 Then
+                            nextR4.Image = Nothing
+                        End If
+                    ElseIf Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1 Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                        If CB1 > 5 Then
+                            nextB3.Image = Nothing
+                        End If
+                    ElseIf Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2 Then
+                        ThisPB.Image = CurrentPiece.Image
+                        current.Image = Nothing
+                        movecount = 0
+                        If CB2 > 5 Then
+                            nextB4.Image = Nothing
+                        End If
                     End If
                 End If
             End If
         End If
 
+        For i = 0 To 3
+            If c_trackarray(i).Image Is red.Image Then
+                c_trackarray(i).Image = kingred.Image
+            End If
+        Next
+        For i = 28 To 31
+            If c_trackarray(i) Is black.Image Then
+                c_trackarray(i).Image = blackking.Image
+
+            End If
+        Next
     End Sub
     Function makegame(ByVal Array() As Integer)
         For i = 0 To 31

@@ -79,7 +79,7 @@ Partial Class Play
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(397, 590)
+        Me.Label1.Location = New System.Drawing.Point(33, 554)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 4
