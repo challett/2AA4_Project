@@ -301,7 +301,7 @@
         writer.Close()
     End Sub
 
-    Private Sub ExitGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitGameToolStripMenuItem.Click
+    Private Sub ExitGameToolStripMenuItem_Click(sender As Object, e As EventArgs)
         start_Menu.Show()
         Me.Hide()
 

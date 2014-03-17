@@ -30,11 +30,10 @@ Partial Class Play
         Me.CurrentInfo = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitApplicationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitApplicationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.blackking, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.black, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,10 +113,22 @@ Partial Class Play
         '
         'MenuToolStripMenuItem
         '
-        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveGameToolStripMenuItem, Me.ExitGameToolStripMenuItem, Me.ExitApplicationToolStripMenuItem})
+        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveGameToolStripMenuItem, Me.ExitApplicationToolStripMenuItem})
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
         Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
         Me.MenuToolStripMenuItem.Text = "Menu"
+        '
+        'SaveGameToolStripMenuItem
+        '
+        Me.SaveGameToolStripMenuItem.Name = "SaveGameToolStripMenuItem"
+        Me.SaveGameToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.SaveGameToolStripMenuItem.Text = "Save Game"
+        '
+        'ExitApplicationToolStripMenuItem
+        '
+        Me.ExitApplicationToolStripMenuItem.Name = "ExitApplicationToolStripMenuItem"
+        Me.ExitApplicationToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ExitApplicationToolStripMenuItem.Text = "Exit Application"
         '
         'ViewToolStripMenuItem
         '
@@ -129,26 +140,8 @@ Partial Class Play
         'BackgroundToolStripMenuItem
         '
         Me.BackgroundToolStripMenuItem.Name = "BackgroundToolStripMenuItem"
-        Me.BackgroundToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BackgroundToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.BackgroundToolStripMenuItem.Text = "Background"
-        '
-        'SaveGameToolStripMenuItem
-        '
-        Me.SaveGameToolStripMenuItem.Name = "SaveGameToolStripMenuItem"
-        Me.SaveGameToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.SaveGameToolStripMenuItem.Text = "Save Game"
-        '
-        'ExitGameToolStripMenuItem
-        '
-        Me.ExitGameToolStripMenuItem.Name = "ExitGameToolStripMenuItem"
-        Me.ExitGameToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.ExitGameToolStripMenuItem.Text = "Exit Game"
-        '
-        'ExitApplicationToolStripMenuItem
-        '
-        Me.ExitApplicationToolStripMenuItem.Name = "ExitApplicationToolStripMenuItem"
-        Me.ExitApplicationToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.ExitApplicationToolStripMenuItem.Text = "Exit Application"
         '
         'Play
         '
@@ -186,7 +179,6 @@ Partial Class Play
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents MenuToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SaveGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ExitGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitApplicationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackgroundToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

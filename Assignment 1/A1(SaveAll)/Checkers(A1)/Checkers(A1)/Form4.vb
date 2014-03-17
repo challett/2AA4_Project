@@ -23,6 +23,9 @@
         For i = 20 To 31
             gamesetup(i) = 2 '2 for red piece
         Next
+        For i = 12 To 19
+            gamesetup(i) = 0 ' for nothing
+        Next
         gamesetup(32) = 10
         Play.Visible = True
 
