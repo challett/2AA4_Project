@@ -18,7 +18,7 @@
     Private Sub Play_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim c_track As Integer
         Dim c_Initialx As Integer
-        infoarray = {"B8", "D8", "F8", "H8", "A7", "C7", "E7", "G7", "B6", "D6", "F6", "H6", "A5", "C5", "E5", "G5", "B4", "D4", "F4", "H4", "A3", "C3", "E3", "G3", "D2", "F2", "H2", "A1", "C1", "E1", "G1"}
+        infoarray = {"B8", "D8", "F8", "H8", "A7", "C7", "E7", "G7", "B6", "D6", "F6", "H6", "A5", "C5", "E5", "G5", "B4", "D4", "F4", "H4", "A3", "C3", "E3", "G3", "B2", "D2", "F2", "H2", "A1", "C1", "E1", "G1"}
         c_track = 0
         For i = 0 To 7 'Drawing Image Boxes
             For j = 0 To 3
