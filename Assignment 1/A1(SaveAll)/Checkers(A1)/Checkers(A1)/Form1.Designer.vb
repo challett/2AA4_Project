@@ -156,6 +156,10 @@ Partial Class Play
         Me.Controls.Add(Me.red)
         Me.Controls.Add(Me.black)
         Me.Controls.Add(Me.blackking)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(517, 663)
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(517, 663)
         Me.Name = "Play"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "Checkers!"
