@@ -10,11 +10,11 @@
     Dim ThisPB As PictureBox
     Dim infoarray(0 To 31) As String
 
-
     Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         start_Menu.Close()
         CustomMode.Close()
     End Sub
+
     Private Sub Play_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim c_track As Integer
         Dim c_Initialx As Integer
@@ -314,7 +314,6 @@
 
     Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundToolStripMenuItem.Click
         BackGround.Show()
-
     End Sub
 
 End Class

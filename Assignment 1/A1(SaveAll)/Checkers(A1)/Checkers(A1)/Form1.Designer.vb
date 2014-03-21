@@ -22,6 +22,7 @@ Partial Class Play
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Play))
         Me.blackking = New System.Windows.Forms.PictureBox()
         Me.black = New System.Windows.Forms.PictureBox()
         Me.red = New System.Windows.Forms.PictureBox()
@@ -147,8 +148,8 @@ Partial Class Play
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LayoutBlueM
-        Me.ClientSize = New System.Drawing.Size(501, 624)
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LayoutGreen
+        Me.ClientSize = New System.Drawing.Size(501, 625)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.CurrentInfo)
         Me.Controls.Add(Me.CurrentPiece)
@@ -156,13 +157,14 @@ Partial Class Play
         Me.Controls.Add(Me.red)
         Me.Controls.Add(Me.black)
         Me.Controls.Add(Me.blackking)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(517, 663)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(517, 663)
         Me.Name = "Play"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.Text = "Checkers!"
+        Me.Text = "Ultimate Checkers"
         CType(Me.blackking, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.black, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).EndInit()
