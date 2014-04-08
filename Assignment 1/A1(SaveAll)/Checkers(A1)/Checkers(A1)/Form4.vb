@@ -5,12 +5,14 @@
     Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
         ButtonC.Visible = True
         ButtonS.Visible = True
+        Button2.Visible = True
 
     End Sub
 
     Private Sub start_Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ButtonC.Visible = False
         ButtonS.Visible = False
+        Button2.Visible = False
         For i = 0 To 32
             gamesetup(i) = 0
         Next
@@ -38,7 +40,6 @@
         CustomMode.Show()
     End Sub
     Public Function GetSetup()
-
         Return gamesetup
 
     End Function
@@ -62,4 +63,20 @@
     Public Function GetsetupL()
         Return gamesetupL
     End Function
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        For i = 0 To 11
+            gamesetup(i) = 1 '1 for black piece
+        Next
+        For i = 20 To 31
+            gamesetup(i) = 2 '2 for red piece
+        Next
+        For i = 12 To 19
+            gamesetup(i) = 0 ' for nothing
+        Next
+        gamesetup(32) = 10
+        Me.Visible = False
+        PlayingAgainstAi.Show()
+    End Sub
 End Class

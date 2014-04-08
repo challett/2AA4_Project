@@ -1,4 +1,4 @@
-﻿Public Class Play
+﻿Public Class PlayingAgainstAi
     Dim c_trackarray(0 To 31) As PictureBox
     Dim Legal(0 To 31) As String
     Dim movecount As Integer
@@ -15,19 +15,21 @@
     Dim BadBlack(0 To 11) As Integer
     Dim Turn, allowmove As Boolean
     Dim count2 As Integer
-    Dim meee As Integer
-
+    Dim mode As Integer
+    Dim modeplay As Boolean
+    Dim comp As PictureBox
+    Dim compmove1, compmove2, compmove3, compmove4 As Integer
 
     Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         start_Menu.Close()
         CustomMode.Close()
     End Sub
-    Private Sub Play_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub PlayingAgainstAi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim c_track As Integer
         Dim c_Initialx As Integer
         count2 = 0
         m_turn = 0
-        MsgBox("Black Will Make The First Move")
+        mode = MsgBox("Would You Like to Play as Black (Black Goes First)?", vbYesNo)
         BadBlack = {4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31}
         BadRed = {0, 1, 2, 3, 8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27}
         infoarray = {"B8", "D8", "F8", "H8", "A7", "C7", "E7", "G7", "B6", "D6", "F6", "H6", "A5", "C5", "E5", "G5", "B4", "D4", "F4", "H4", "A3", "C3", "E3", "G3", "B2", "D2", "F2", "H2", "A1", "C1", "E1", "G1"}
@@ -74,8 +76,12 @@
     End Sub
     Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
         ThisPB = sender
-
-        If Not (ThisPB.Image Is Nothing) Then
+        If mode = 6 Then
+            modeplay = ThisPB.Image Is black.Image Or ThisPB.Image Is blackking.Image
+        ElseIf mode = 7 Then
+            modeplay = ThisPB.Image Is red.Image Or ThisPB.Image Is kingred.Image
+        End If
+        If Not (ThisPB.Image Is Nothing) And modeplay Then
             movecount = 0
             If movecount = 0 Then
                 current = ThisPB
@@ -134,7 +140,7 @@
             Call NextLogic(CurrentPiece) 'Allows Legal Jump Moves
 
             If movecount = 1 Then
-                Turn = m_turn Mod 2 = 0
+                Turn = (m_turn Mod 2 = 0)
                 If CurrentPiece.Image Is black.Image And Turn Then
                     m_turn += 1
                     If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1) Then
@@ -152,24 +158,7 @@
                             nextB4.Image = Nothing
                         End If
                     End If
-                ElseIf CurrentPiece.Image Is red.Image And (Not Turn) Then
-                    m_turn += 1
-                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
-                        If CR1 > 5 Then
-                            nextR3.Image = Nothing
-                        End If
-                    ElseIf (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
-                        If CR2 > 5 Then
-                            nextR4.Image = Nothing
-                        End If
-                    End If
-                ElseIf (CurrentPiece.Image Is kingred.Image And Not Turn) Or (CurrentPiece.Image Is blackking.Image And Turn) Then
+                ElseIf (CurrentPiece.Image Is blackking.Image And Turn) Then
                     m_turn += 1
                     If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Then
                         ThisPB.Image = CurrentPiece.Image
@@ -205,7 +194,9 @@
         End If
         BlackInfo.Text = "Current: " & blackcount()
         RedInfo.Text = "Current: " & redcount()
+
         Call CheckKing()
+
     End Sub
 
     Function nextPiece(ByVal NextB1 As String, ByVal NextB2 As String, ByVal NextR1 As String, ByVal NextR2 As String)

@@ -28,6 +28,7 @@ Partial Class start_Menu
         Me.Score = New System.Windows.Forms.Button()
         Me.ButtonS = New System.Windows.Forms.Button()
         Me.ButtonC = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Start
@@ -35,7 +36,7 @@ Partial Class start_Menu
         Me.Start.BackColor = System.Drawing.Color.Transparent
         Me.Start.Font = New System.Drawing.Font("Agency FB", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Start.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Start.Location = New System.Drawing.Point(38, 120)
+        Me.Start.Location = New System.Drawing.Point(38, 95)
         Me.Start.Name = "Start"
         Me.Start.Size = New System.Drawing.Size(102, 55)
         Me.Start.TabIndex = 0
@@ -45,7 +46,7 @@ Partial Class start_Menu
         'Load
         '
         Me.Load.Font = New System.Drawing.Font("Agency FB", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Load.Location = New System.Drawing.Point(146, 120)
+        Me.Load.Location = New System.Drawing.Point(146, 95)
         Me.Load.Name = "Load"
         Me.Load.Size = New System.Drawing.Size(102, 55)
         Me.Load.TabIndex = 1
@@ -66,7 +67,7 @@ Partial Class start_Menu
         '
         Me.ButtonS.Font = New System.Drawing.Font("Agency FB", 16.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonS.ForeColor = System.Drawing.Color.Black
-        Me.ButtonS.Location = New System.Drawing.Point(38, 191)
+        Me.ButtonS.Location = New System.Drawing.Point(38, 156)
         Me.ButtonS.Name = "ButtonS"
         Me.ButtonS.Size = New System.Drawing.Size(102, 36)
         Me.ButtonS.TabIndex = 4
@@ -77,19 +78,31 @@ Partial Class start_Menu
         '
         Me.ButtonC.Font = New System.Drawing.Font("Agency FB", 16.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonC.ForeColor = System.Drawing.Color.Black
-        Me.ButtonC.Location = New System.Drawing.Point(146, 191)
+        Me.ButtonC.Location = New System.Drawing.Point(146, 156)
         Me.ButtonC.Name = "ButtonC"
         Me.ButtonC.Size = New System.Drawing.Size(102, 36)
         Me.ButtonC.TabIndex = 5
         Me.ButtonC.Text = "Custom"
         Me.ButtonC.UseVisualStyleBackColor = True
         '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Agency FB", 15.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.Black
+        Me.Button2.Location = New System.Drawing.Point(38, 198)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(102, 36)
+        Me.Button2.TabIndex = 7
+        Me.Button2.Text = "Standard(AI)"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'start_Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(284, 322)
+        Me.ClientSize = New System.Drawing.Size(284, 321)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ButtonC)
         Me.Controls.Add(Me.ButtonS)
         Me.Controls.Add(Me.Score)
@@ -108,4 +121,5 @@ Partial Class start_Menu
     Friend WithEvents Score As System.Windows.Forms.Button
     Friend WithEvents ButtonS As System.Windows.Forms.Button
     Friend WithEvents ButtonC As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

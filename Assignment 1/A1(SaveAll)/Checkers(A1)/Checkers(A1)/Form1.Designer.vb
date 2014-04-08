@@ -22,10 +22,6 @@ Partial Class Play
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.blackking = New System.Windows.Forms.PictureBox()
-        Me.black = New System.Windows.Forms.PictureBox()
-        Me.red = New System.Windows.Forms.PictureBox()
-        Me.kingred = New System.Windows.Forms.PictureBox()
         Me.CurrentPiece = New System.Windows.Forms.PictureBox()
         Me.CurrentInfo = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -34,53 +30,19 @@ Partial Class Play
         Me.ExitApplicationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BlackInfo = New System.Windows.Forms.Label()
+        Me.RedInfo = New System.Windows.Forms.Label()
+        Me.blackking = New System.Windows.Forms.PictureBox()
+        Me.black = New System.Windows.Forms.PictureBox()
+        Me.red = New System.Windows.Forms.PictureBox()
+        Me.kingred = New System.Windows.Forms.PictureBox()
+        CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         CType(Me.blackking, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.black, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.kingred, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'blackking
-        '
-        Me.blackking.Image = Global.WindowsApplication1.My.Resources.Resources.BP_King__shadow_
-        Me.blackking.Location = New System.Drawing.Point(12, 41)
-        Me.blackking.Name = "blackking"
-        Me.blackking.Size = New System.Drawing.Size(100, 50)
-        Me.blackking.TabIndex = 0
-        Me.blackking.TabStop = False
-        Me.blackking.Visible = False
-        '
-        'black
-        '
-        Me.black.Image = Global.WindowsApplication1.My.Resources.Resources.BP_shadow_
-        Me.black.Location = New System.Drawing.Point(141, 41)
-        Me.black.Name = "black"
-        Me.black.Size = New System.Drawing.Size(100, 50)
-        Me.black.TabIndex = 1
-        Me.black.TabStop = False
-        Me.black.Visible = False
-        '
-        'red
-        '
-        Me.red.Image = Global.WindowsApplication1.My.Resources.Resources.RP_shadow_
-        Me.red.Location = New System.Drawing.Point(270, 41)
-        Me.red.Name = "red"
-        Me.red.Size = New System.Drawing.Size(100, 50)
-        Me.red.TabIndex = 2
-        Me.red.TabStop = False
-        Me.red.Visible = False
-        '
-        'kingred
-        '
-        Me.kingred.Image = Global.WindowsApplication1.My.Resources.Resources.RP_King__shadow_
-        Me.kingred.Location = New System.Drawing.Point(400, 41)
-        Me.kingred.Name = "kingred"
-        Me.kingred.Size = New System.Drawing.Size(100, 50)
-        Me.kingred.TabIndex = 3
-        Me.kingred.TabStop = False
-        Me.kingred.Visible = False
         '
         'CurrentPiece
         '
@@ -143,12 +105,76 @@ Partial Class Play
         Me.BackgroundToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.BackgroundToolStripMenuItem.Text = "Background"
         '
+        'BlackInfo
+        '
+        Me.BlackInfo.AutoSize = True
+        Me.BlackInfo.BackColor = System.Drawing.Color.Transparent
+        Me.BlackInfo.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BlackInfo.Location = New System.Drawing.Point(379, 589)
+        Me.BlackInfo.Name = "BlackInfo"
+        Me.BlackInfo.Size = New System.Drawing.Size(63, 12)
+        Me.BlackInfo.TabIndex = 9
+        Me.BlackInfo.Text = "Your Turn"
+        '
+        'RedInfo
+        '
+        Me.RedInfo.AutoSize = True
+        Me.RedInfo.BackColor = System.Drawing.Color.Transparent
+        Me.RedInfo.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RedInfo.Location = New System.Drawing.Point(44, 589)
+        Me.RedInfo.Name = "RedInfo"
+        Me.RedInfo.Size = New System.Drawing.Size(72, 12)
+        Me.RedInfo.TabIndex = 10
+        Me.RedInfo.Text = "Current: 12"
+        '
+        'blackking
+        '
+        Me.blackking.Image = Global.WindowsApplication1.My.Resources.Resources.BP_King__shadow_
+        Me.blackking.Location = New System.Drawing.Point(12, 41)
+        Me.blackking.Name = "blackking"
+        Me.blackking.Size = New System.Drawing.Size(100, 50)
+        Me.blackking.TabIndex = 0
+        Me.blackking.TabStop = False
+        Me.blackking.Visible = False
+        '
+        'black
+        '
+        Me.black.Image = Global.WindowsApplication1.My.Resources.Resources.BP_shadow_
+        Me.black.Location = New System.Drawing.Point(141, 41)
+        Me.black.Name = "black"
+        Me.black.Size = New System.Drawing.Size(100, 50)
+        Me.black.TabIndex = 1
+        Me.black.TabStop = False
+        Me.black.Visible = False
+        '
+        'red
+        '
+        Me.red.Image = Global.WindowsApplication1.My.Resources.Resources.RP_shadow_
+        Me.red.Location = New System.Drawing.Point(270, 41)
+        Me.red.Name = "red"
+        Me.red.Size = New System.Drawing.Size(100, 50)
+        Me.red.TabIndex = 2
+        Me.red.TabStop = False
+        Me.red.Visible = False
+        '
+        'kingred
+        '
+        Me.kingred.Image = Global.WindowsApplication1.My.Resources.Resources.RP_King__shadow_
+        Me.kingred.Location = New System.Drawing.Point(400, 41)
+        Me.kingred.Name = "kingred"
+        Me.kingred.Size = New System.Drawing.Size(100, 50)
+        Me.kingred.TabIndex = 3
+        Me.kingred.TabStop = False
+        Me.kingred.Visible = False
+        '
         'Play
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LayoutBlueM
         Me.ClientSize = New System.Drawing.Size(501, 624)
+        Me.Controls.Add(Me.RedInfo)
+        Me.Controls.Add(Me.BlackInfo)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.CurrentInfo)
         Me.Controls.Add(Me.CurrentPiece)
@@ -163,21 +189,17 @@ Partial Class Play
         Me.Name = "Play"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "Checkers!"
+        CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         CType(Me.blackking, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.black, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.kingred, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents blackking As System.Windows.Forms.PictureBox
-    Friend WithEvents black As System.Windows.Forms.PictureBox
-    Friend WithEvents red As System.Windows.Forms.PictureBox
-    Friend WithEvents kingred As System.Windows.Forms.PictureBox
     Friend WithEvents CurrentPiece As System.Windows.Forms.PictureBox
     Friend WithEvents CurrentInfo As System.Windows.Forms.Label
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
@@ -186,4 +208,10 @@ Partial Class Play
     Friend WithEvents ExitApplicationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackgroundToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BlackInfo As System.Windows.Forms.Label
+    Friend WithEvents RedInfo As System.Windows.Forms.Label
+    Friend WithEvents blackking As System.Windows.Forms.PictureBox
+    Friend WithEvents black As System.Windows.Forms.PictureBox
+    Friend WithEvents red As System.Windows.Forms.PictureBox
+    Friend WithEvents kingred As System.Windows.Forms.PictureBox
 End Class
