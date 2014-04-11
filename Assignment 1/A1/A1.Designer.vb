@@ -46,6 +46,8 @@ Partial Class CustomMode
         Me.CustomInfo = New System.Windows.Forms.Label()
         Me.ErrorClick = New System.Windows.Forms.PictureBox()
         Me.TimerDisp = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.RightClick.SuspendLayout()
         CType(Me.CustomPiece, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,7 +78,7 @@ Partial Class CustomMode
         'QuitGameToolStripMenuItem
         '
         Me.QuitGameToolStripMenuItem.Name = "QuitGameToolStripMenuItem"
-        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.QuitGameToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.QuitGameToolStripMenuItem.Text = "Quit Game"
         '
         'SettingsToolStripMenuItem
@@ -89,17 +91,18 @@ Partial Class CustomMode
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
         'ExitMode
         '
-        Me.ExitMode.Location = New System.Drawing.Point(195, 593)
+        Me.ExitMode.BackColor = System.Drawing.Color.Transparent
+        Me.ExitMode.Location = New System.Drawing.Point(182, 595)
         Me.ExitMode.Name = "ExitMode"
-        Me.ExitMode.Size = New System.Drawing.Size(111, 23)
+        Me.ExitMode.Size = New System.Drawing.Size(174, 22)
         Me.ExitMode.TabIndex = 22
-        Me.ExitMode.Text = "Complete Setup"
-        Me.ExitMode.UseVisualStyleBackColor = True
+        Me.ExitMode.Text = "Complete Setup(2 Player)"
+        Me.ExitMode.UseVisualStyleBackColor = False
         '
         'RightClick
         '
@@ -230,6 +233,26 @@ Partial Class CustomMode
         Me.TimerDisp.TabIndex = 30
         Me.TimerDisp.Visible = False
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Transparent
+        Me.Button1.Location = New System.Drawing.Point(48, 570)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(67, 50)
+        Me.Button1.TabIndex = 31
+        Me.Button1.Text = "Play As Red(Ai)"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Button2.Location = New System.Drawing.Point(387, 570)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(67, 50)
+        Me.Button2.TabIndex = 32
+        Me.Button2.Text = "Play As Black(Ai)"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
         'CustomMode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -238,6 +261,8 @@ Partial Class CustomMode
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(501, 624)
         Me.ContextMenuStrip = Me.RightClick
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TimerDisp)
         Me.Controls.Add(Me.ErrorClick)
         Me.Controls.Add(Me.CustomInfo)
@@ -290,5 +315,7 @@ Partial Class CustomMode
     Friend WithEvents CustomInfo As System.Windows.Forms.Label
     Friend WithEvents ErrorClick As System.Windows.Forms.PictureBox
     Friend WithEvents TimerDisp As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class

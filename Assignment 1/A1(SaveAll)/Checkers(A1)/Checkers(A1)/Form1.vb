@@ -1,21 +1,21 @@
 ﻿Public Class Play
     Dim c_trackarray(0 To 31) As PictureBox
-    Dim Legal(0 To 31) As String
-    Dim movecount As Integer
-    Dim current As PictureBox
-    Dim CB1, CB2, CR1, CR2 As Integer
-    Dim BlkT, RedT As Boolean
-    Dim BadNum As Integer
-    Dim nextB1, nextB2, nextR1, nextR2, nextB11, nextB21, nextR11, nextR21 As String
-    Dim nextB3, nextB4, nextR3, nextR4 As PictureBox
-    Dim ThisPB As PictureBox
-    Dim infoarray(0 To 31) As String
+    Dim c_Legal(0 To 31) As String
+    Dim c_movecount As Integer
+    Dim m_CurrentPiece As PictureBox
+    Dim C_B1, C_B2, C_R1, C_R2 As Integer
+    Dim m_BlkT, m_RedT As Boolean
+    Dim m_Current As Integer
+    Dim m_nextB1, m_nextB2, m_nextR1, m_nextR2, m_nextB11, m_nextB21, m_nextR11, m_nextR21 As String
+    Dim c_nextB3, c_nextB4, c_nextR3, c_nextR4 As PictureBox
+    Dim m_ThisPB As PictureBox
+    Dim c_infoarray(0 To 31) As String
     Dim m_turn As Integer
-    Dim BadRed(0 To 11) As Integer
-    Dim BadBlack(0 To 11) As Integer
-    Dim Turn, allowmove As Boolean
-    Dim count2 As Integer
-    Dim meee As Integer
+    Dim e_red(0 To 11) As Integer
+    Dim e_black(0 To 11) As Integer
+    Dim c_PPTurn, c_Allowmove As Boolean
+    Dim c_NoJumpCount As Integer
+    Dim c_CurrentPlayer As String
 
 
     Private Sub Form_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -25,12 +25,12 @@
     Private Sub Play_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim c_track As Integer
         Dim c_Initialx As Integer
-        count2 = 0
+        c_NoJumpCount = 0
         m_turn = 0
         MsgBox("Black Will Make The First Move")
-        BadBlack = {4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31}
-        BadRed = {0, 1, 2, 3, 8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27}
-        infoarray = {"B8", "D8", "F8", "H8", "A7", "C7", "E7", "G7", "B6", "D6", "F6", "H6", "A5", "C5", "E5", "G5", "B4", "D4", "F4", "H4", "A3", "C3", "E3", "G3", "B2", "D2", "F2", "H2", "A1", "C1", "E1", "G1"}
+        e_black = {4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31}
+        e_red = {0, 1, 2, 3, 8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27}
+        c_infoarray = {"B8", "D8", "F8", "H8", "A7", "C7", "E7", "G7", "B6", "D6", "F6", "H6", "A5", "C5", "E5", "G5", "B4", "D4", "F4", "H4", "A3", "C3", "E3", "G3", "B2", "D2", "F2", "H2", "A1", "C1", "E1", "G1"}
         c_track = 0
         For i = 0 To 7 'Drawing Image Boxes
             For j = 0 To 3
@@ -73,151 +73,151 @@
 
     End Sub
     Protected Sub MakePiece(ByVal sender As Object, ByVal e As EventArgs)
-        ThisPB = sender
-        Turn = m_turn Mod 2 = 0
-
-        If Not (ThisPB.Image Is Nothing) Then
-            movecount = 0
-            If movecount = 0 Then
-                current = ThisPB
-                CurrentPiece.Image = ThisPB.Image
-                BadNum = Convert.ToInt32(Replace(current.Name, "PictureBox", ""))
-                CurrentInfo.Text = "Your Position: " & infoarray(BadNum)
+        m_ThisPB = sender
+        c_PPTurn = m_turn Mod 2 = 0
+        Button1.Visible = True
+        If Not (m_ThisPB.Image Is Nothing) Then
+            c_movecount = 0
+            If c_movecount = 0 Then
+                m_CurrentPiece = m_ThisPB
+                CurrentPiece.Image = m_ThisPB.Image
+                m_Current = Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", ""))
+                CurrentInfo.Text = "Your Position: " & c_infoarray(m_Current)
             End If
             Call BadPiece(CurrentPiece)
             Call DecideMove()
-            movecount = 1
+            c_movecount = 1
         End If
- 
+
         For i = 0 To 31 'All Takable Pieces
-            Legal(i) = Nothing
+            c_Legal(i) = Nothing
             Call BadPiece(c_trackarray(i))
             Call DecideMove()
-            nextB11 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) + CB1)
-            nextB21 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) + CB2)
-            nextR11 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) - CR1)
-            nextR21 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) - CR2)
-            Call nextPiece(nextB11, nextB21, nextR11, nextR21)
+            m_nextB11 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) + C_B1)
+            m_nextB21 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) + C_B2)
+            m_nextR11 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) - C_R1)
+            m_nextR21 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(c_trackarray(i).Name, "PictureBox", "")) - C_R2)
+            Call nextPiece(m_nextB11, m_nextB21, m_nextR11, m_nextR21)
             Call NextLogic(c_trackarray(i))
-            If CB1 > 6 Or CR1 > 6 Then
-                If Turn And c_trackarray(i).Image IsNot red.Image Then
-                    Legal(i) = c_trackarray(i).Name
-                ElseIf Not Turn And c_trackarray(i).Image IsNot black.Image Then
-                    Legal(i) = c_trackarray(i).Name
+            If C_B1 > 6 Or C_R1 > 6 Then
+                If c_PPTurn And c_trackarray(i).Image IsNot red.Image Then
+                    c_Legal(i) = c_trackarray(i).Name
+                ElseIf Not c_PPTurn And c_trackarray(i).Image IsNot black.Image Then
+                    c_Legal(i) = c_trackarray(i).Name
                 Else
-                    Legal(i) = Nothing
+                    c_Legal(i) = Nothing
                 End If
             End If
         Next
-        If movecount = 1 Then
+        If c_movecount = 1 Then
             For i = 0 To 31
-                If Legal(i) Is Nothing Then
-                    count2 += 1
+                If c_Legal(i) Is Nothing Then
+                    c_NoJumpCount += 1
                 End If
             Next
-            If count2 > 31 Then
-                allowmove = True
-                count2 = 0
+            If c_NoJumpCount > 31 Then
+                c_Allowmove = True
+                c_NoJumpCount = 0
             Else
-                allowmove = False
-                count2 = 0
+                c_Allowmove = False
+                c_NoJumpCount = 0
             End If
             For i = 0 To 31
-                If Legal(i) = current.Name Then
-                    allowmove = True
+                If c_Legal(i) = m_CurrentPiece.Name Then
+                    c_Allowmove = True
                 End If
             Next
         End If
 
-        If ThisPB.Image Is Nothing And allowmove Then
+        If m_ThisPB.Image Is Nothing And c_Allowmove Then
 
             'Finding Next Piece
-            nextB1 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1)
-            nextB2 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2)
-            nextR1 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1)
-            nextR2 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2)
+            m_nextB1 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) + C_B1)
+            m_nextB2 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) + C_B2)
+            m_nextR1 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) - C_R1)
+            m_nextR2 = "PictureBox" & Convert.ToString(Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) - C_R2)
 
-            Call nextPiece(nextB1, nextB2, nextR1, nextR2) 'Detects Whether if next piece is filled
+            Call nextPiece(m_nextB1, m_nextB2, m_nextR1, m_nextR2) 'Detects Whether if next piece is filled
 
             Call NextLogic(CurrentPiece) 'Allows Legal Jump Moves
 
-            If movecount = 1 Then
-                If CurrentPiece.Image Is black.Image And Turn Then
-                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
+            If c_movecount = 1 Then
+                If CurrentPiece.Image Is black.Image And c_PPTurn Then
+                    If Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) + C_B1) Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
                         m_turn += 1
 
-                        If CB1 > 5 Then
-                            nextB3.Image = Nothing
+                        If C_B1 > 5 Then
+                            c_nextB3.Image = Nothing
                         End If
-                    ElseIf Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
+                    ElseIf Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) + C_B2) Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
                         m_turn += 1
 
-                        If CB2 > 5 Then
-                            nextB4.Image = Nothing
-                        End If
-                    End If
-                ElseIf CurrentPiece.Image Is red.Image And (Not Turn) Then
-                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
-                        m_turn += 1
-
-                        If CR1 > 5 Then
-                            nextR3.Image = Nothing
-                        End If
-                    ElseIf (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
-                        m_turn += 1
-
-                        If CR2 > 5 Then
-                            nextR4.Image = Nothing
+                        If C_B2 > 5 Then
+                            c_nextB4.Image = Nothing
                         End If
                     End If
-                ElseIf (CurrentPiece.Image Is kingred.Image And Not Turn) Or (CurrentPiece.Image Is blackking.Image And Turn) Then
-                    If Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR1) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
+                ElseIf CurrentPiece.Image Is red.Image And (Not c_PPTurn) Then
+                    If Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) - C_R1) Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
                         m_turn += 1
 
-                        If CR1 > 5 Then
-                            nextR3.Image = Nothing
+                        If C_R1 > 5 Then
+                            c_nextR3.Image = Nothing
                         End If
-                    ElseIf (Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) - CR2) Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
+                    ElseIf (Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) - C_R2) Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
                         m_turn += 1
 
-                        If CR2 > 5 Then
-                            nextR4.Image = Nothing
+                        If C_R2 > 5 Then
+                            c_nextR4.Image = Nothing
                         End If
-                    ElseIf Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB1 Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
+                    End If
+                ElseIf (CurrentPiece.Image Is kingred.Image And Not c_PPTurn) Or (CurrentPiece.Image Is blackking.Image And c_PPTurn) Then
+                    If Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = (Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) - C_R1) Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
                         m_turn += 1
 
-                        If CB1 > 5 Then
-                            nextB3.Image = Nothing
+                        If C_R1 > 5 Then
+                            c_nextR3.Image = Nothing
                         End If
-                    ElseIf Convert.ToInt32(Replace(ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(current.Name, "PictureBox", "")) + CB2 Then
-                        ThisPB.Image = CurrentPiece.Image
-                        current.Image = Nothing
-                        movecount = 0
+                    ElseIf (Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) - C_R2) Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
                         m_turn += 1
 
-                        If CB2 > 5 Then
-                            nextB4.Image = Nothing
+                        If C_R2 > 5 Then
+                            c_nextR4.Image = Nothing
+                        End If
+                    ElseIf Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) + C_B1 Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
+                        m_turn += 1
+
+                        If C_B1 > 5 Then
+                            c_nextB3.Image = Nothing
+                        End If
+                    ElseIf Convert.ToInt32(Replace(m_ThisPB.Name, "PictureBox", "")) = Convert.ToInt32(Replace(m_CurrentPiece.Name, "PictureBox", "")) + C_B2 Then
+                        m_ThisPB.Image = CurrentPiece.Image
+                        m_CurrentPiece.Image = Nothing
+                        c_movecount = 0
+                        m_turn += 1
+
+                        If C_B2 > 5 Then
+                            c_nextB4.Image = Nothing
                         End If
                     End If
                 End If
@@ -226,60 +226,72 @@
         BlackInfo.Text = "Current: " & blackcount()
         RedInfo.Text = "Current: " & redcount()
         Call CheckKing()
+        c_PPTurn = (m_turn Mod 2 = 0)
+        If c_PPTurn Then
+            Button1.Text = "Blk's Turn, Press to Resign"
+            Button1.ForeColor = Color.Red
+            c_CurrentPlayer = "Black"
+        Else
+            Button1.Text = "Red's Turn, Press to Resign"
+            Button1.ForeColor = Color.Black
+
+            c_CurrentPlayer = "Red"
+
+        End If
 
     End Sub
 
     Function nextPiece(ByVal NextB1 As String, ByVal NextB2 As String, ByVal NextR1 As String, ByVal NextR2 As String)
         For i = 0 To 31
             If c_trackarray(i).Name = NextB1 Then
-                nextB3 = c_trackarray(i)
+                c_nextB3 = c_trackarray(i)
             End If
         Next
         For i = 0 To 31
             If c_trackarray(i).Name = NextB2 Then
-                nextB4 = c_trackarray(i)
+                c_nextB4 = c_trackarray(i)
             End If
         Next
         For i = 0 To 31
             If c_trackarray(i).Name = NextR1 Then
-                nextR3 = c_trackarray(i)
+                c_nextR3 = c_trackarray(i)
             End If
         Next
         For i = 0 To 31
             If c_trackarray(i).Name = NextR2 Then
-                nextR4 = c_trackarray(i)
+                c_nextR4 = c_trackarray(i)
             End If
         Next
     End Function
     Function DecideMove()
-        If RedT = True Then
-            CR1 = 3
-            CR2 = 4
+        If m_RedT = True Then
+            C_R1 = 3
+            C_R2 = 4
         Else
-            CR1 = 4
-            CR2 = 5
+            C_R1 = 4
+            C_R2 = 5
         End If
-        If BlkT = True Then
-            CB1 = 3
-            CB2 = 4
+        If m_BlkT = True Then
+            C_B1 = 3
+            C_B2 = 4
         Else
-            CB1 = 4
-            CB2 = 5
+            C_B1 = 4
+            C_B2 = 5
         End If
     End Function
     Function BadPiece(ByRef Piece As PictureBox)
         If Piece.Image Is red.Image Or Piece.Image Is kingred.Image Or Piece.Image Is blackking.Image Then
-            If BadRed.Contains(BadNum) Then
-                RedT = True
+            If e_red.Contains(m_Current) Then
+                m_RedT = True
             Else
-                RedT = False
+                m_RedT = False
             End If
         End If
         If Piece.Image Is black.Image Or Piece.Image Is blackking.Image Or Piece.Image Is kingred.Image Then
-            If BadBlack.Contains(BadNum) Then
-                BlkT = True
+            If e_black.Contains(m_Current) Then
+                m_BlkT = True
             Else
-                BlkT = False
+                m_BlkT = False
             End If
         End If
     End Function
@@ -363,44 +375,44 @@
     End Sub
     Function NextLogic(ByVal CurrentPic As PictureBox)
         If CurrentPic.Image Is black.Image Or CurrentPic.Image Is blackking.Image Then
-            If nextB3.Image Is red.Image Or nextB3.Image Is kingred.Image Then
-                CB1 = 7
+            If c_nextB3.Image Is red.Image Or c_nextB3.Image Is kingred.Image Then
+                C_B1 = 7
             End If
         End If
         If CurrentPic.Image Is black.Image Or CurrentPic.Image Is blackking.Image Then
-            If nextB4.Image Is red.Image Or nextB4.Image Is kingred.Image Then
-                CB2 = 9
+            If c_nextB4.Image Is red.Image Or c_nextB4.Image Is kingred.Image Then
+                C_B2 = 9
             End If
         End If
         If CurrentPic.Image Is blackking.Image Then
-            If nextR3.Image Is red.Image Or nextR3.Image Is kingred.Image Then
-                CR1 = 7
+            If c_nextR3.Image Is red.Image Or c_nextR3.Image Is kingred.Image Then
+                C_R1 = 7
             End If
         End If
         If CurrentPic.Image Is blackking.Image Then
-            If nextR4.Image Is red.Image Or nextR4.Image Is kingred.Image Then
-                CR2 = 9
+            If c_nextR4.Image Is red.Image Or c_nextR4.Image Is kingred.Image Then
+                C_R2 = 9
             End If
         End If
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         If CurrentPic.Image Is red.Image Or CurrentPic.Image Is kingred.Image Then
-            If nextR3.Image Is black.Image Or nextR3.Image Is blackking.Image Then
-                CR1 = 7
+            If c_nextR3.Image Is black.Image Or c_nextR3.Image Is blackking.Image Then
+                C_R1 = 7
             End If
         End If
         If CurrentPic.Image Is red.Image Or CurrentPic.Image Is kingred.Image Then
-            If nextR4.Image Is black.Image Or nextR4.Image Is blackking.Image Then
-                CR2 = 9
+            If c_nextR4.Image Is black.Image Or c_nextR4.Image Is blackking.Image Then
+                C_R2 = 9
             End If
         End If
         If CurrentPic.Image Is kingred.Image Then
-            If nextB3.Image Is black.Image Or nextB3.Image Is blackking.Image Then
-                CB1 = 7
+            If c_nextB3.Image Is black.Image Or c_nextB3.Image Is blackking.Image Then
+                C_B1 = 7
             End If
         End If
         If CurrentPic.Image Is kingred.Image Then
-            If nextB4.Image Is black.Image Or nextB4.Image Is blackking.Image Then
-                CB2 = 9
+            If c_nextB4.Image Is black.Image Or c_nextB4.Image Is blackking.Image Then
+                C_B2 = 9
             End If
         End If
     End Function
@@ -409,4 +421,11 @@
 
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim c_resign As Integer
+        c_resign = MsgBox(c_CurrentPlayer & ", Are You Sure You Wish To Resign, Click Yes Will Close This Game and You Will Lose?", vbYesNo)
+        If c_resign = 6 Then
+            Me.Close()
+        End If
+    End Sub
 End Class

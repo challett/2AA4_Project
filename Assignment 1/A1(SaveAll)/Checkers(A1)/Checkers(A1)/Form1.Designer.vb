@@ -36,6 +36,7 @@ Partial Class Play
         Me.black = New System.Windows.Forms.PictureBox()
         Me.red = New System.Windows.Forms.PictureBox()
         Me.kingred = New System.Windows.Forms.PictureBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.blackking, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -167,12 +168,25 @@ Partial Class Play
         Me.kingred.TabStop = False
         Me.kingred.Visible = False
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.Maroon
+        Me.Button1.Location = New System.Drawing.Point(197, 600)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(176, 23)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Adbicate"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
+        '
         'Play
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LayoutBlueM
         Me.ClientSize = New System.Drawing.Size(501, 624)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.RedInfo)
         Me.Controls.Add(Me.BlackInfo)
         Me.Controls.Add(Me.MenuStrip1)
@@ -214,4 +228,5 @@ Partial Class Play
     Friend WithEvents black As System.Windows.Forms.PictureBox
     Friend WithEvents red As System.Windows.Forms.PictureBox
     Friend WithEvents kingred As System.Windows.Forms.PictureBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

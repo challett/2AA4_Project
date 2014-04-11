@@ -29,6 +29,7 @@ Partial Class start_Menu
         Me.ButtonS = New System.Windows.Forms.Button()
         Me.ButtonC = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Start
@@ -87,14 +88,26 @@ Partial Class start_Menu
         '
         'Button2
         '
-        Me.Button2.Font = New System.Drawing.Font("Agency FB", 15.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Font = New System.Drawing.Font("Agency FB", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Black
-        Me.Button2.Location = New System.Drawing.Point(38, 198)
+        Me.Button2.Location = New System.Drawing.Point(38, 187)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(102, 36)
         Me.Button2.TabIndex = 7
-        Me.Button2.Text = "Standard(AI)"
+        Me.Button2.Text = "Standard(AI as Red)"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Agency FB", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.Black
+        Me.Button1.Location = New System.Drawing.Point(38, 220)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(102, 36)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Standard(AI as Blk)"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'start_Menu
         '
@@ -102,6 +115,7 @@ Partial Class start_Menu
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(284, 321)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ButtonC)
         Me.Controls.Add(Me.ButtonS)
@@ -122,4 +136,5 @@ Partial Class start_Menu
     Friend WithEvents ButtonS As System.Windows.Forms.Button
     Friend WithEvents ButtonC As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

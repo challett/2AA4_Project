@@ -6,7 +6,7 @@
         ButtonC.Visible = True
         ButtonS.Visible = True
         Button2.Visible = True
-
+        Button1.Visible = True
     End Sub
 
     Private Sub start_Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -78,5 +78,21 @@
         gamesetup(32) = 10
         Me.Visible = False
         PlayingAgainstAi.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        For i = 0 To 11
+            gamesetup(i) = 1 '1 for black piece
+        Next
+        For i = 20 To 31
+            gamesetup(i) = 2 '2 for red piece
+        Next
+        For i = 12 To 19
+            gamesetup(i) = 0 ' for nothing
+        Next
+        gamesetup(32) = 10
+        Me.Visible = False
+        PlayAsRed.Show()
     End Sub
 End Class

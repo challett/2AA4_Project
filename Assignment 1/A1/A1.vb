@@ -82,19 +82,6 @@
         Return gamesetup
 
     End Function
-    'Private Sub Form1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-
-    ' Quit is "Q"
-    'If e.KeyCode = Keys.Q Then
-    'Dim result As Integer = MessageBox.Show("Are you sure you would like to quit?" & vbCrLf & "Clicking 'Yes' will lose any current game progress.", "Quit", MessageBoxButtons.YesNo)
-    'If result = DialogResult.No Then
-    'Form2.Close()
-    'ElseIf result = DialogResult.Yes Then
-    'End
-    'End If
-    'End If
-
-    'End Sub
 
     Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click 'Returns All to Form Load State
         For i = 0 To 31
@@ -182,5 +169,41 @@
 
     Private Sub BackgroundToolStripMenuItem_Click(sender As Object, e As EventArgs)
         BackGround.Show()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        For i = 0 To 31
+            If c_trackarray(i).Image Is black.Image Then
+                gamesetup(i) = 1
+            ElseIf c_trackarray(i).Image Is red.Image Then
+                gamesetup(i) = 2
+            ElseIf c_trackarray(i).Image Is blkking.Image Then
+                gamesetup(i) = 3
+            ElseIf c_trackarray(i).Image Is kingred.Image Then
+                gamesetup(i) = 4
+            Else
+                gamesetup(i) = 0
+            End If
+        Next
+        Me.Visible = False
+        PlayingAgainstAi.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        For i = 0 To 31
+            If c_trackarray(i).Image Is black.Image Then
+                gamesetup(i) = 1
+            ElseIf c_trackarray(i).Image Is red.Image Then
+                gamesetup(i) = 2
+            ElseIf c_trackarray(i).Image Is blkking.Image Then
+                gamesetup(i) = 3
+            ElseIf c_trackarray(i).Image Is kingred.Image Then
+                gamesetup(i) = 4
+            Else
+                gamesetup(i) = 0
+            End If
+        Next
+        Me.Visible = False
+        PlayAsRed.Show()
     End Sub
 End Class
