@@ -22,6 +22,7 @@ Partial Class Play
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Play))
         Me.CurrentPiece = New System.Windows.Forms.PictureBox()
         Me.CurrentInfo = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -110,10 +111,10 @@ Partial Class Play
         '
         Me.BlackInfo.AutoSize = True
         Me.BlackInfo.BackColor = System.Drawing.Color.Transparent
-        Me.BlackInfo.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BlackInfo.Location = New System.Drawing.Point(379, 589)
+        Me.BlackInfo.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BlackInfo.Location = New System.Drawing.Point(386, 585)
         Me.BlackInfo.Name = "BlackInfo"
-        Me.BlackInfo.Size = New System.Drawing.Size(63, 12)
+        Me.BlackInfo.Size = New System.Drawing.Size(50, 16)
         Me.BlackInfo.TabIndex = 9
         Me.BlackInfo.Text = "Your Turn"
         '
@@ -121,10 +122,10 @@ Partial Class Play
         '
         Me.RedInfo.AutoSize = True
         Me.RedInfo.BackColor = System.Drawing.Color.Transparent
-        Me.RedInfo.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RedInfo.Location = New System.Drawing.Point(44, 589)
+        Me.RedInfo.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RedInfo.Location = New System.Drawing.Point(48, 585)
         Me.RedInfo.Name = "RedInfo"
-        Me.RedInfo.Size = New System.Drawing.Size(72, 12)
+        Me.RedInfo.Size = New System.Drawing.Size(55, 16)
         Me.RedInfo.TabIndex = 10
         Me.RedInfo.Text = "Current: 12"
         '
@@ -170,11 +171,11 @@ Partial Class Play
         '
         'Button1
         '
-        Me.Button1.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.Maroon
-        Me.Button1.Location = New System.Drawing.Point(197, 600)
+        Me.Button1.Location = New System.Drawing.Point(197, 573)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(176, 23)
+        Me.Button1.Size = New System.Drawing.Size(155, 40)
         Me.Button1.TabIndex = 11
         Me.Button1.Text = "Adbicate"
         Me.Button1.UseVisualStyleBackColor = True
@@ -184,8 +185,8 @@ Partial Class Play
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LayoutBlueM
-        Me.ClientSize = New System.Drawing.Size(501, 624)
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LayoutGreen
+        Me.ClientSize = New System.Drawing.Size(501, 625)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.RedInfo)
         Me.Controls.Add(Me.BlackInfo)
@@ -196,13 +197,14 @@ Partial Class Play
         Me.Controls.Add(Me.red)
         Me.Controls.Add(Me.black)
         Me.Controls.Add(Me.blackking)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(517, 663)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(517, 663)
         Me.Name = "Play"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.Text = "Checkers!"
+        Me.Text = "Ultimate Checkers"
         CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()

@@ -22,6 +22,7 @@ Partial Class PlayAsRed
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PlayAsRed))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.RedInfo = New System.Windows.Forms.Label()
         Me.BlackInfo = New System.Windows.Forms.Label()
@@ -45,10 +46,10 @@ Partial Class PlayAsRed
         '
         'Button1
         '
-        Me.Button1.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(197, 600)
+        Me.Button1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(197, 577)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(172, 23)
+        Me.Button1.Size = New System.Drawing.Size(128, 37)
         Me.Button1.TabIndex = 34
         Me.Button1.Text = "Press Here To Resign"
         Me.Button1.UseVisualStyleBackColor = True
@@ -57,10 +58,10 @@ Partial Class PlayAsRed
         '
         Me.RedInfo.AutoSize = True
         Me.RedInfo.BackColor = System.Drawing.Color.Transparent
-        Me.RedInfo.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RedInfo.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RedInfo.Location = New System.Drawing.Point(44, 587)
         Me.RedInfo.Name = "RedInfo"
-        Me.RedInfo.Size = New System.Drawing.Size(72, 12)
+        Me.RedInfo.Size = New System.Drawing.Size(55, 16)
         Me.RedInfo.TabIndex = 33
         Me.RedInfo.Text = "Current: 12"
         '
@@ -68,10 +69,10 @@ Partial Class PlayAsRed
         '
         Me.BlackInfo.AutoSize = True
         Me.BlackInfo.BackColor = System.Drawing.Color.Transparent
-        Me.BlackInfo.Font = New System.Drawing.Font("Algerian", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BlackInfo.Location = New System.Drawing.Point(382, 587)
+        Me.BlackInfo.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BlackInfo.Location = New System.Drawing.Point(384, 587)
         Me.BlackInfo.Name = "BlackInfo"
-        Me.BlackInfo.Size = New System.Drawing.Size(63, 12)
+        Me.BlackInfo.Size = New System.Drawing.Size(50, 16)
         Me.BlackInfo.TabIndex = 32
         Me.BlackInfo.Text = "Your Turn"
         '
@@ -179,9 +180,10 @@ Partial Class PlayAsRed
         Me.Controls.Add(Me.red)
         Me.Controls.Add(Me.black)
         Me.Controls.Add(Me.blackking)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "PlayAsRed"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.Text = "PlayAgainstAi"
+        Me.Text = "Ultimate Checkers"
         CType(Me.CurrentPiece, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.kingred, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).EndInit()

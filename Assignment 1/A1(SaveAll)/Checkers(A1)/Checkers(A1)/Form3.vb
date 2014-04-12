@@ -8,8 +8,6 @@
         Me.Hide()
         CustomMode.Show()
 
-        'PAUSE TIMER
-
     End Sub
 
 End Class

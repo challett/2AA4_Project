@@ -158,7 +158,7 @@ Partial Class CustomMode
         '
         Me.CustomPiece.BackColor = System.Drawing.Color.Transparent
         Me.CustomPiece.Image = Global.WindowsApplication1.My.Resources.Resources.BP_shadow_
-        Me.CustomPiece.Location = New System.Drawing.Point(123, 570)
+        Me.CustomPiece.Location = New System.Drawing.Point(124, 570)
         Me.CustomPiece.Name = "CustomPiece"
         Me.CustomPiece.Size = New System.Drawing.Size(53, 50)
         Me.CustomPiece.TabIndex = 23
@@ -236,21 +236,21 @@ Partial Class CustomMode
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Button1.Location = New System.Drawing.Point(48, 570)
+        Me.Button1.Location = New System.Drawing.Point(25, 570)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(67, 50)
+        Me.Button1.Size = New System.Drawing.Size(95, 50)
         Me.Button1.TabIndex = 31
-        Me.Button1.Text = "Play As Red(Ai)"
+        Me.Button1.Text = "Play As Red (AI)"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.Color.Transparent
-        Me.Button2.Location = New System.Drawing.Point(387, 570)
+        Me.Button2.Location = New System.Drawing.Point(379, 570)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(67, 50)
+        Me.Button2.Size = New System.Drawing.Size(94, 50)
         Me.Button2.TabIndex = 32
-        Me.Button2.Text = "Play As Black(Ai)"
+        Me.Button2.Text = "Play As Blk (AI)"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'CustomMode
